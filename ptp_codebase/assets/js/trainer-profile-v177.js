@@ -473,6 +473,23 @@
 
     if (ctaBtn) {
         var isSubmitting = false;
+
+        function resetCTA() {
+            isSubmitting = false;
+            ctaBtn.style.opacity = '';
+            ctaBtn.style.pointerEvents = '';
+            updateCTA(); // restore correct text ("Book Now — $XX" or prompt)
+        }
+
+        // v243: Reset on bfcache restore (user hits back after redirect)
+        window.addEventListener('pageshow', function(e) {
+            if (e.persisted) resetCTA();
+        });
+        // v243: Also reset on visibilitychange (iOS Safari bfcache edge case)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && isSubmitting) resetCTA();
+        });
+
         ctaBtn.addEventListener('click', function(){
             if (ctaBtn.disabled || isSubmitting) return;
             isSubmitting = true;
@@ -515,20 +532,12 @@
                 window.location.href = cartUrl + '?' + params.toString();
             } catch(err) {
                 console.error('Booking redirect error:', err);
-                ctaBtn.textContent = originalText;
-                ctaBtn.style.opacity = '1';
-                ctaBtn.style.pointerEvents = '';
-                isSubmitting = false;
+                resetCTA();
                 alert('Something went wrong. Please try again.');
             }
             /* Safety reset after 5s in case redirect stalls */
             setTimeout(function() {
-                if (isSubmitting) {
-                    ctaBtn.textContent = originalText;
-                    ctaBtn.style.opacity = '1';
-                    ctaBtn.style.pointerEvents = '';
-                    isSubmitting = false;
-                }
+                if (isSubmitting) resetCTA();
             }, 5000);
         });
     }
@@ -620,7 +629,10 @@
 
     /* ── SCROLL LOCK SAFETY NET ── */
     var _scrollLockY = 0;
+    var _scrollLocked = false;
     function lockScroll() {
+        if (_scrollLocked) return; // v243: prevent double-lock clobbering scroll position
+        _scrollLocked = true;
         _scrollLockY = window.scrollY;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
@@ -628,6 +640,8 @@
         document.body.style.width = '100%';
     }
     function unlockScroll() {
+        if (!_scrollLocked) return;
+        _scrollLocked = false;
         document.body.style.overflow = '';
         document.body.style.position = '';
         document.body.style.top = '';

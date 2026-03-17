@@ -594,7 +594,7 @@ if (!document.body.classList.contains('tp210')) document.body.classList.add('tp2
                         <?php endforeach; ?>
                     </div>
 
-                    <button type="button" class="tp210-svc-cta" id="svcBookBtn" onclick="if(window.ptpOpenSheet)ptpOpenSheet()">
+                    <button type="button" class="tp210-svc-cta" id="svcBookBtn">
                         Book a Session
                         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </button>
@@ -861,9 +861,9 @@ if ($_svc_mentor_enabled || $_svc_is_own_profile):
             <div class="tp210-book-handle"></div>
             <button type="button" class="tp210-book-close" id="bClose" aria-label="Close" onclick="if(window.ptpCloseSheet)ptpCloseSheet()"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
 
-            <div class="tp210-bar" id="bBar" onclick="if(window.ptpOpenSheet)ptpOpenSheet()">
+            <div class="tp210-bar" id="bBar">
                 <div><span class="tp210-bar-price">$<?php echo esc_html($rate); ?></span><span class="tp210-bar-unit">/session</span></div>
-                <button type="button" class="tp210-bar-btn" onclick="if(window.ptpOpenSheet)ptpOpenSheet()">Book Now</button>
+                <button type="button" class="tp210-bar-btn">Book Now</button>
             </div>
 
             <div class="tp210-book-hdr">
