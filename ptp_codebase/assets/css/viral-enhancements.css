@@ -1,0 +1,597 @@
+/**
+ * PTP Viral Enhancements CSS v116
+ * Styles for share prompts, review flow, and trainer share buttons
+ */
+
+/* ==========================================
+   VARIABLES
+   ========================================== */
+:root {
+    --ptp-gold: #FCB900;
+    --ptp-black: #0A0A0A;
+    --ptp-white: #FFFFFF;
+    --ptp-gray: #F5F5F5;
+    --ptp-gray-dark: #6B7280;
+    --ptp-green: #22C55E;
+    --ptp-blue: #3B82F6;
+    --ptp-whatsapp: #25D366;
+    --ptp-radius: 12px;
+    --ptp-radius-sm: 8px;
+    --ptp-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================
+   1. ENHANCED THANK-YOU SHARE PROMPT
+   ========================================== */
+.ptp-viral-share-cta {
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+    border-radius: var(--ptp-radius);
+    padding: 0;
+    margin-top: 20px;
+    overflow: hidden;
+    border: 2px solid var(--ptp-gold);
+    animation: pulseGold 2s ease-in-out infinite;
+}
+
+@keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(252, 185, 0, 0.4); }
+    50% { box-shadow: 0 0 20px 4px rgba(252, 185, 0, 0.2); }
+}
+
+.ptp-viral-share-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-viral-share-emoji {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.ptp-viral-share-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ptp-viral-share-subtitle {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.ptp-viral-share-body {
+    padding: 20px;
+}
+
+.ptp-viral-share-desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+}
+
+.ptp-viral-share-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+@media (min-width: 500px) {
+    .ptp-viral-share-buttons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.ptp-viral-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 12px;
+    border-radius: var(--ptp-radius-sm);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.ptp-viral-btn-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.ptp-viral-btn-primary {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-viral-btn-primary:hover {
+    background: #e5a800;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(252, 185, 0, 0.4);
+}
+
+.ptp-viral-btn-whatsapp {
+    background: var(--ptp-whatsapp);
+    color: white;
+}
+
+.ptp-viral-btn-whatsapp:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+}
+
+.ptp-viral-btn-email {
+    background: var(--ptp-blue);
+    color: white;
+}
+
+.ptp-viral-btn-email:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.ptp-viral-btn-copy {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: inherit;
+}
+
+.ptp-viral-btn-copy:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.ptp-viral-btn-copy.copied {
+    background: var(--ptp-green);
+    color: white;
+}
+
+.ptp-viral-share-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+    padding: 10px;
+    background: rgba(252, 185, 0, 0.1);
+    border: 1px dashed rgba(252, 185, 0, 0.3);
+    border-radius: var(--ptp-radius-sm);
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   2. POST-SESSION REVIEW PROMPTS
+   ========================================== */
+.ptp-review-prompts {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-radius: var(--ptp-radius);
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 2px solid #F59E0B;
+}
+
+.ptp-review-prompts-header {
+    margin-bottom: 16px;
+}
+
+.ptp-review-prompts-header h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #92400E;
+    margin: 0 0 6px;
+}
+
+.ptp-review-prompts-header p {
+    font-size: 14px;
+    color: #B45309;
+    margin: 0;
+}
+
+.ptp-review-card {
+    background: white;
+    border-radius: var(--ptp-radius-sm);
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ptp-review-card:last-child {
+    margin-bottom: 0;
+}
+
+.ptp-review-card-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.ptp-review-card-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ptp-gold);
+}
+
+.ptp-review-card-details {
+    flex: 1;
+}
+
+.ptp-review-card-trainer {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ptp-black);
+}
+
+.ptp-review-card-meta {
+    font-size: 13px;
+    color: var(--ptp-gray-dark);
+}
+
+.ptp-review-card-stars {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.ptp-star {
+    font-size: 32px;
+    color: #D1D5DB;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.ptp-star:hover,
+.ptp-star.hovered {
+    color: var(--ptp-gold);
+    transform: scale(1.2);
+}
+
+.ptp-star.selected {
+    color: var(--ptp-gold);
+}
+
+.ptp-review-card-form {
+    margin-top: 12px;
+}
+
+.ptp-review-card-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #E5E7EB;
+    border-radius: var(--ptp-radius-sm);
+    font-family: inherit;
+    font-size: 14px;
+    resize: none;
+    transition: border-color 0.2s;
+}
+
+.ptp-review-card-form textarea:focus {
+    outline: none;
+    border-color: var(--ptp-gold);
+}
+
+.ptp-review-submit-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+    border: none;
+    border-radius: var(--ptp-radius-sm);
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-review-submit-btn:hover {
+    background: #e5a800;
+    transform: translateY(-1px);
+}
+
+.ptp-review-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Review Share Modal */
+.ptp-review-share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ptp-review-share-modal-content {
+    background: white;
+    border-radius: var(--ptp-radius);
+    padding: 32px 24px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.ptp-review-share-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: var(--ptp-gray);
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    color: var(--ptp-gray-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ptp-review-share-success {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.ptp-review-share-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--ptp-green);
+    color: white;
+    border-radius: 50%;
+    font-size: 28px;
+    margin-bottom: 16px;
+}
+
+.ptp-review-share-success h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    color: var(--ptp-black);
+    margin: 0 0 8px;
+}
+
+.ptp-review-share-success p {
+    color: var(--ptp-gray-dark);
+    font-size: 14px;
+    margin: 0;
+}
+
+.ptp-review-share-cta {
+    background: var(--ptp-gray);
+    border-radius: var(--ptp-radius-sm);
+    padding: 20px;
+    text-align: center;
+}
+
+.ptp-review-share-cta h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: var(--ptp-black);
+    margin: 0 0 4px;
+}
+
+.ptp-review-share-cta p {
+    font-size: 13px;
+    color: var(--ptp-gray-dark);
+    margin: 0 0 16px;
+}
+
+.ptp-review-share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.ptp-review-share-buttons a,
+.ptp-review-share-buttons button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: var(--ptp-black);
+    color: white;
+    border: none;
+    border-radius: var(--ptp-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-review-share-buttons a:hover,
+.ptp-review-share-buttons button:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   3. TRAINER PROFILE SHARE BUTTONS
+   ========================================== */
+.ptp-trainer-share {
+    position: relative;
+    display: inline-block;
+    margin-top: 16px;
+}
+
+.ptp-trainer-share-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-trainer-share-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--ptp-gold);
+}
+
+.ptp-trainer-share-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    background: white;
+    border-radius: var(--ptp-radius-sm);
+    box-shadow: var(--ptp-shadow);
+    min-width: 180px;
+    overflow: hidden;
+    z-index: 100;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.ptp-trainer-share-dropdown-header {
+    padding: 12px 16px;
+    background: var(--ptp-gray);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ptp-gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ptp-trainer-share-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--ptp-black);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.ptp-trainer-share-option:hover {
+    background: var(--ptp-gray);
+}
+
+/* ==========================================
+   4. INLINE SHARE BUTTONS (Generic)
+   ========================================== */
+.ptp-share-buttons-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ptp-share-btn-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--ptp-radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-share-sms {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-share-whatsapp {
+    background: var(--ptp-whatsapp);
+    color: white;
+}
+
+.ptp-share-email {
+    background: var(--ptp-blue);
+    color: white;
+}
+
+.ptp-share-copy {
+    background: var(--ptp-gray);
+    color: var(--ptp-black);
+}
+
+.ptp-share-btn-inline:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+@media (max-width: 480px) {
+    .ptp-viral-share-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ptp-review-share-modal-content {
+        padding: 24px 16px;
+    }
+    
+    .ptp-trainer-share-dropdown {
+        left: 0;
+        right: 0;
+        transform: none;
+        margin: 8px 16px 0;
+    }
+}

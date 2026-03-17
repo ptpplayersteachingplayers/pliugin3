@@ -1,0 +1,52 @@
+{
+  "name": "PTP Soccer Training",
+  "short_name": "PTP Soccer",
+  "description": "Book private soccer training with verified coaches",
+  "start_url": "/find-trainers/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#FCB900",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/wp-content/uploads/2025/11/ptp-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/wp-content/uploads/2025/11/ptp-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/wp-content/uploads/2025/11/ptp-screenshot-1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Find Trainers Near You"
+    }
+  ],
+  "categories": ["sports", "fitness", "education"],
+  "shortcuts": [
+    {
+      "name": "Find Trainers",
+      "short_name": "Trainers",
+      "description": "Browse available trainers",
+      "url": "/find-trainers/",
+      "icons": [{ "src": "/wp-content/uploads/2025/11/ptp-icon-96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "My Training",
+      "short_name": "Bookings",
+      "description": "View your bookings",
+      "url": "/my-training/",
+      "icons": [{ "src": "/wp-content/uploads/2025/11/ptp-icon-96.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

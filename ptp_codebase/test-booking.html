@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html><head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PTP Booking Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/trainer-profile-v177.css">
+<style>
+:root{--tp-gold:#FCB900;--tp-gold-soft:#FFF9E5;--tp-black:#0A0A0A;--tp-white:#fff;--tp-green:#22C55E;--tp-g50:#FAFAFA;--tp-g100:#F4F4F5;--tp-g200:#E4E4E7;--tp-g300:#D4D4D8;--tp-g400:#A1A1AA;--tp-g500:#71717A;--tp-g600:#52525B;--tp-g700:#3F3F46;--tp-sans:'Inter',sans-serif;--tp-serif:'Oswald',sans-serif;--tp-display:'Oswald',sans-serif;--tp-r:4px;--tp-rs:4px;--tp-ease:.15s ease;--tp-shadow-lg:0 4px 12px rgba(0,0,0,.04),0 24px 48px rgba(0,0,0,.08);--safe-b:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--tp-sans);background:#fff;-webkit-font-smoothing:antialiased}
+#dbg{position:fixed;top:0;left:0;right:0;z-index:99999;background:#000;color:#0f0;font:11px/1.4 monospace;padding:8px 12px;max-height:100px;overflow-y:auto;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head><body>
+
+<div id="dbg">Waiting for taps...</div>
+
+<div style="padding:16px 20px;background:#0A0A0A;color:#FCB900;font-family:Oswald,sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;text-align:center">
+Booking Panel Test
+</div>
+<div style="padding:16px;font-size:13px;color:#666;line-height:1.5">
+Tap the gold <b>"Book Now"</b> bar at the bottom to open the panel. Or tap <b>"Book a Session"</b> below. Then select each step.
+</div>
+
+<!-- Book a Session button (same as Train tab in real template) -->
+<div style="padding:16px">
+<button type="button" id="svcBookBtn" style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 20px;background:#FCB900;color:#0A0A0A;font-family:Oswald,sans-serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:2px solid #FCB900;border-radius:4px;cursor:pointer;min-height:52px">
+    Book a Session
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</button>
+</div>
+
+<!-- EXACT same HTML structure as the original trainer-profile-v177.php -->
+<div class="tp210-overlay" id="bOverlay"></div>
+<div class="tp210-book" id="bPanel">
+    <div class="tp210-book-handle" id="bHandle"></div>
+    <button type="button" class="tp210-book-close" id="bClose" aria-label="Close">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="tp210-bar" id="bBar">
+        <div><span class="tp210-bar-price">$80</span><span class="tp210-bar-unit">/session</span></div>
+        <button type="button" class="tp210-bar-btn">Book Now</button>
+    </div>
+
+    <div class="tp210-book-hdr">
+        <div class="tp210-book-rate" id="bRate">$80<small>/session</small></div>
+        <div class="tp210-book-save" id="bSave"></div>
+    </div>
+
+    <div class="tp210-book-body">
+        <!-- Step 1: Package -->
+        <div class="tp210-step">
+            <div class="tp210-step-t"><span class="tp210-step-n">1</span> Choose Package</div>
+            <div class="tp210-pkgs">
+                <div class="tp210-pkg sel" data-pkg="single" data-price="80" data-save="0" data-count="1" data-per="80">
+                    <div class="tp210-pkg-name">1 Session</div>
+                    <div class="tp210-pkg-price">$80</div>
+                </div>
+                <div class="tp210-pkg" data-pkg="pack5" data-price="340" data-save="60" data-count="5" data-per="68">
+                    <div class="tp210-pkg-name">5-Pack</div>
+                    <div class="tp210-pkg-price">$340</div>
+                    <div class="tp210-pkg-save">Save $60</div>
+                </div>
+                <div class="tp210-pkg" data-pkg="pack10" data-price="640" data-save="160" data-count="10" data-per="64">
+                    <div class="tp210-pkg-name">10-Pack</div>
+                    <div class="tp210-pkg-price">$640</div>
+                    <div class="tp210-pkg-save">Save $160</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Group -->
+        <div class="tp210-step">
+            <div class="tp210-step-t"><span class="tp210-step-n">2</span> How Many Players?</div>
+            <div class="tp210-grps">
+                <div class="tp210-grp sel" data-group="1">
+                    <div class="tp210-grp-lbl">1 Player</div><div class="tp210-grp-sub">1-on-1</div>
+                </div>
+                <div class="tp210-grp" data-group="2">
+                    <div class="tp210-grp-lbl">2 Players</div><div class="tp210-grp-sub">Sibling / Friend</div>
+                </div>
+                <div class="tp210-grp" data-group="3">
+                    <div class="tp210-grp-lbl">3 Players</div><div class="tp210-grp-sub">Small Group</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Location -->
+        <div class="tp210-step">
+            <div class="tp210-step-t"><span class="tp210-step-n">3</span> Training Location</div>
+            <div class="tp210-locs">
+                <div class="tp210-lopt" data-loc="Haverford Reserve" data-addr="801 Darby Rd, Havertown PA" data-lat="39.98" data-lng="-75.31">
+                    <div class="tp210-lopt-pin"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <div class="tp210-lopt-info"><div class="tp210-lopt-name">Haverford Reserve</div><div class="tp210-lopt-addr">801 Darby Rd, Havertown PA</div></div>
+                    <div class="tp210-lopt-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+                <div class="tp210-lopt" data-loc="Radnor Fields" data-addr="125 King of Prussia Rd, Radnor PA" data-lat="40.04" data-lng="-75.36">
+                    <div class="tp210-lopt-pin"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <div class="tp210-lopt-info"><div class="tp210-lopt-name">Radnor Fields</div><div class="tp210-lopt-addr">125 King of Prussia Rd, Radnor PA</div></div>
+                    <div class="tp210-lopt-chk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Date -->
+        <div class="tp210-step">
+            <div class="tp210-step-t"><span class="tp210-step-n">4</span> Pick Date</div>
+            <div class="tp210-dates" id="dateScroll">
+                <div class="tp210-dc" data-date="2026-03-18"><div class="tp210-dc-dow">Wed</div><div class="tp210-dc-day">18</div><div class="tp210-dc-mon">Mar</div></div>
+                <div class="tp210-dc" data-date="2026-03-20"><div class="tp210-dc-dow">Fri</div><div class="tp210-dc-day">20</div><div class="tp210-dc-mon">Mar</div></div>
+                <div class="tp210-dc" data-date="2026-03-22"><div class="tp210-dc-dow">Sun</div><div class="tp210-dc-day">22</div><div class="tp210-dc-mon">Mar</div></div>
+                <div class="tp210-dc" data-date="2026-03-25"><div class="tp210-dc-dow">Wed</div><div class="tp210-dc-day">25</div><div class="tp210-dc-mon">Mar</div></div>
+                <div class="tp210-dc" data-date="2026-03-27"><div class="tp210-dc-dow">Fri</div><div class="tp210-dc-day">27</div><div class="tp210-dc-mon">Mar</div></div>
+            </div>
+        </div>
+
+        <!-- Step 5: Time -->
+        <div class="tp210-step">
+            <div class="tp210-step-t"><span class="tp210-step-n">5</span> Pick Time</div>
+            <div class="tp210-times" id="timeGrid"></div>
+        </div>
+
+        <button type="button" class="tp210-cta" id="ctaBtn" disabled>Select Location</button>
+    </div>
+</div>
+
+<script>
+// Mock TP_CONFIG
+var TP_CONFIG = {
+    ajaxUrl: '',
+    trainerId: 98,
+    nonce: '',
+    isLoggedIn: false,
+    messagesUrl: '/messages/',
+    availByDay: {
+        "3": [{"start":"15:00","end":"19:00"}],
+        "5": [{"start":"14:00","end":"18:00"}],
+        "0": [{"start":"10:00","end":"14:00"}]
+    },
+    bookedMap: {"2026-03-20_16:00:00":true},
+    trainerRate: 80,
+    trainerSlug: 'test-trainer',
+    cartUrl: '/ptp-checkout/',
+    gallery: []
+};
+
+// Debug logger
+function dbg(msg) {
+    var el = document.getElementById('dbg');
+    var t = new Date().toLocaleTimeString();
+    el.textContent = t + ' ' + msg + '\n' + el.textContent.split('\n').slice(0,8).join('\n');
+}
+</script>
+
+<!-- Load the ACTUAL plugin JS file -->
+<script src="assets/js/trainer-profile-v177.js"></script>
+
+<script>
+// Post-load verification
+setTimeout(function() {
+    var panel = document.getElementById('bPanel');
+    var overlay = document.getElementById('bOverlay');
+    dbg('Panel exists: ' + !!panel);
+    dbg('Overlay exists: ' + !!overlay);
+    dbg('Steps: ' + document.querySelectorAll('.tp210-step').length);
+    dbg('Pkgs: ' + document.querySelectorAll('.tp210-pkg').length);
+    dbg('Locs: ' + document.querySelectorAll('.tp210-lopt').length);
+    dbg('Dates: ' + document.querySelectorAll('.tp210-dc').length);
+    
+    // Verify delegation is on document
+    dbg('Ready — tap Book Now bar');
+}, 500);
+</script>
+
+</body></html>
