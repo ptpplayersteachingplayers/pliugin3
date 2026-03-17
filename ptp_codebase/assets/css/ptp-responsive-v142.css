@@ -1,0 +1,1083 @@
+/**
+ * PTP Responsive Styles v142
+ * Mobile-first approach with optimized breakpoints
+ * 
+ * Breakpoints:
+ * - Mobile: < 768px (default)
+ * - Tablet: 768px - 1023px
+ * - Desktop: 1024px - 1439px
+ * - Large Desktop: 1440px+
+ */
+
+/* =============================================
+   CSS CUSTOM PROPERTIES
+   ============================================= */
+
+:root {
+    /* Colors */
+    --ptp-gold: #FCB900;
+    --ptp-gold-light: rgba(252, 185, 0, 0.1);
+    --ptp-gold-hover: #E5A800;
+    --ptp-black: #0A0A0A;
+    --ptp-white: #FFFFFF;
+    --ptp-gray-50: #F9FAFB;
+    --ptp-gray-100: #F3F4F6;
+    --ptp-gray-200: #E5E7EB;
+    --ptp-gray-300: #D1D5DB;
+    --ptp-gray-400: #9CA3AF;
+    --ptp-gray-500: #6B7280;
+    --ptp-gray-600: #4B5563;
+    --ptp-gray-700: #374151;
+    --ptp-gray-800: #1F2937;
+    --ptp-green: #22C55E;
+    --ptp-red: #EF4444;
+    
+    /* Spacing */
+    --ptp-space-xs: 4px;
+    --ptp-space-sm: 8px;
+    --ptp-space-md: 16px;
+    --ptp-space-lg: 24px;
+    --ptp-space-xl: 32px;
+    --ptp-space-2xl: 48px;
+    
+    /* Radius */
+    --ptp-radius-sm: 8px;
+    --ptp-radius-md: 12px;
+    --ptp-radius-lg: 16px;
+    --ptp-radius-xl: 24px;
+    --ptp-radius-full: 9999px;
+    
+    /* Shadows */
+    --ptp-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --ptp-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --ptp-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --ptp-shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+    
+    /* Transitions */
+    --ptp-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+    --ptp-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ptp-duration-fast: 150ms;
+    --ptp-duration-normal: 250ms;
+    --ptp-duration-slow: 350ms;
+    
+    /* Safe areas */
+    --ptp-safe-top: env(safe-area-inset-top, 0px);
+    --ptp-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --ptp-safe-left: env(safe-area-inset-left, 0px);
+    --ptp-safe-right: env(safe-area-inset-right, 0px);
+    
+    /* Typography */
+    --ptp-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --ptp-font-size-xs: 12px;
+    --ptp-font-size-sm: 14px;
+    --ptp-font-size-base: 16px;
+    --ptp-font-size-lg: 18px;
+    --ptp-font-size-xl: 20px;
+    --ptp-font-size-2xl: 24px;
+    --ptp-font-size-3xl: 30px;
+    --ptp-font-size-4xl: 36px;
+}
+
+/* =============================================
+   BASE SCROLL FIX
+   ============================================= */
+
+html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100% !important;
+    position: static !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+html, body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+/* =============================================
+   MOBILE BASE (< 768px)
+   ============================================= */
+
+/* Container */
+.ptp-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: var(--ptp-space-md);
+    padding-right: var(--ptp-space-md);
+    margin: 0 auto;
+}
+
+/* Typography */
+.ptp-h1 {
+    font-size: var(--ptp-font-size-2xl);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ptp-black);
+}
+
+.ptp-h2 {
+    font-size: var(--ptp-font-size-xl);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--ptp-black);
+}
+
+.ptp-h3 {
+    font-size: var(--ptp-font-size-lg);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ptp-black);
+}
+
+.ptp-body {
+    font-size: var(--ptp-font-size-base);
+    line-height: 1.5;
+    color: var(--ptp-gray-600);
+}
+
+.ptp-small {
+    font-size: var(--ptp-font-size-sm);
+    line-height: 1.4;
+    color: var(--ptp-gray-500);
+}
+
+/* Buttons */
+.ptp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ptp-space-sm);
+    font-family: var(--ptp-font-sans);
+    font-size: var(--ptp-font-size-base);
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--ptp-radius-md);
+    cursor: pointer;
+    transition: all var(--ptp-duration-fast) var(--ptp-ease-out);
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px; /* Touch-friendly */
+}
+
+.ptp-btn-primary {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-btn-primary:active {
+    transform: scale(0.98);
+    background: var(--ptp-gold-hover);
+}
+
+.ptp-btn-secondary {
+    background: var(--ptp-gray-100);
+    color: var(--ptp-gray-700);
+}
+
+.ptp-btn-outline {
+    background: transparent;
+    color: var(--ptp-black);
+    border: 2px solid var(--ptp-gray-200);
+}
+
+.ptp-btn-full {
+    width: 100%;
+}
+
+.ptp-btn-lg {
+    padding: 16px 32px;
+    font-size: var(--ptp-font-size-lg);
+}
+
+/* Cards */
+.ptp-card {
+    background: var(--ptp-white);
+    border-radius: var(--ptp-radius-lg);
+    box-shadow: var(--ptp-shadow-md);
+    overflow: hidden;
+}
+
+.ptp-card-body {
+    padding: var(--ptp-space-md);
+}
+
+/* Form elements */
+.ptp-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: var(--ptp-font-size-base);
+    border: 2px solid var(--ptp-gray-200);
+    border-radius: var(--ptp-radius-md);
+    outline: none;
+    transition: border-color var(--ptp-duration-fast);
+    min-height: 44px;
+}
+
+.ptp-input:focus {
+    border-color: var(--ptp-gold);
+}
+
+/* Grid */
+.ptp-grid {
+    display: grid;
+    gap: var(--ptp-space-md);
+}
+
+.ptp-grid-cols-1 {
+    grid-template-columns: 1fr;
+}
+
+.ptp-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Flex utilities */
+.ptp-flex {
+    display: flex;
+}
+
+.ptp-flex-col {
+    flex-direction: column;
+}
+
+.ptp-items-center {
+    align-items: center;
+}
+
+.ptp-justify-between {
+    justify-content: space-between;
+}
+
+.ptp-justify-center {
+    justify-content: center;
+}
+
+.ptp-gap-sm {
+    gap: var(--ptp-space-sm);
+}
+
+.ptp-gap-md {
+    gap: var(--ptp-space-md);
+}
+
+.ptp-gap-lg {
+    gap: var(--ptp-space-lg);
+}
+
+/* =============================================
+   TRAINER PROFILE - MOBILE
+   ============================================= */
+
+.ptp-profile {
+    background: var(--ptp-white);
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.ptp-profile-hero {
+    position: relative;
+}
+
+.ptp-profile-cover {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--ptp-gold) 0%, #FF6B6B 100%);
+}
+
+.ptp-profile-avatar-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+}
+
+.ptp-profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid var(--ptp-white);
+    box-shadow: var(--ptp-shadow-lg);
+    object-fit: cover;
+    background: var(--ptp-gray-100);
+}
+
+.ptp-profile-badge {
+    position: absolute;
+    bottom: 0;
+    right: calc(50% - 54px);
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: var(--ptp-radius-full);
+    text-transform: uppercase;
+}
+
+.ptp-profile-info {
+    text-align: center;
+    padding: var(--ptp-space-md) var(--ptp-space-md) var(--ptp-space-lg);
+}
+
+.ptp-profile-name {
+    font-size: var(--ptp-font-size-2xl);
+    font-weight: 700;
+    color: var(--ptp-black);
+    margin: 0 0 4px;
+}
+
+.ptp-profile-location {
+    font-size: var(--ptp-font-size-sm);
+    color: var(--ptp-gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.ptp-profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--ptp-space-xl);
+    padding: var(--ptp-space-md) 0;
+    border-top: 1px solid var(--ptp-gray-100);
+    border-bottom: 1px solid var(--ptp-gray-100);
+    margin-top: var(--ptp-space-md);
+}
+
+.ptp-stat {
+    text-align: center;
+}
+
+.ptp-stat-value {
+    font-size: var(--ptp-font-size-xl);
+    font-weight: 700;
+    color: var(--ptp-black);
+}
+
+.ptp-stat-label {
+    font-size: var(--ptp-font-size-xs);
+    color: var(--ptp-gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Fixed booking bar */
+.ptp-book-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--ptp-space-md);
+    padding-bottom: calc(var(--ptp-space-md) + var(--ptp-safe-bottom));
+    background: var(--ptp-white);
+    border-top: 1px solid var(--ptp-gray-200);
+    display: flex;
+    align-items: center;
+    gap: var(--ptp-space-md);
+    z-index: 100;
+}
+
+.ptp-book-bar-price {
+    flex-shrink: 0;
+}
+
+.ptp-book-bar-price .price {
+    font-size: var(--ptp-font-size-2xl);
+    font-weight: 700;
+    color: var(--ptp-black);
+}
+
+.ptp-book-bar-price .label {
+    font-size: var(--ptp-font-size-xs);
+    color: var(--ptp-gray-500);
+}
+
+.ptp-book-bar .ptp-btn {
+    flex: 1;
+}
+
+/* Content needs bottom padding for fixed bar */
+.ptp-profile-content {
+    padding-bottom: 100px;
+}
+
+/* Sections */
+.ptp-profile-section {
+    padding: var(--ptp-space-lg) var(--ptp-space-md);
+    border-bottom: 8px solid var(--ptp-gray-50);
+}
+
+.ptp-section-title {
+    font-size: var(--ptp-font-size-lg);
+    font-weight: 700;
+    color: var(--ptp-black);
+    margin: 0 0 var(--ptp-space-md);
+}
+
+/* Tags */
+.ptp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ptp-space-sm);
+}
+
+.ptp-tag {
+    background: var(--ptp-gray-100);
+    color: var(--ptp-gray-700);
+    font-size: var(--ptp-font-size-sm);
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: var(--ptp-radius-full);
+}
+
+.ptp-tag-gold {
+    background: var(--ptp-gold-light);
+    color: var(--ptp-black);
+}
+
+/* =============================================
+   TRAINER GRID - MOBILE
+   ============================================= */
+
+.ptp-trainer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--ptp-space-md);
+    padding: var(--ptp-space-md);
+}
+
+.ptp-trainer-card {
+    background: var(--ptp-white);
+    border-radius: var(--ptp-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--ptp-shadow-md);
+    transition: transform var(--ptp-duration-fast) var(--ptp-ease-spring);
+}
+
+.ptp-trainer-card:active {
+    transform: scale(0.98);
+}
+
+.ptp-trainer-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: var(--ptp-gray-100);
+}
+
+.ptp-trainer-card-body {
+    padding: var(--ptp-space-md);
+}
+
+.ptp-trainer-card-name {
+    font-size: var(--ptp-font-size-lg);
+    font-weight: 700;
+    color: var(--ptp-black);
+    margin: 0 0 4px;
+}
+
+.ptp-trainer-card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--ptp-space-sm);
+    font-size: var(--ptp-font-size-sm);
+    color: var(--ptp-gray-500);
+    margin-bottom: var(--ptp-space-sm);
+}
+
+.ptp-trainer-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--ptp-gold);
+}
+
+.ptp-trainer-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--ptp-space-sm);
+    border-top: 1px solid var(--ptp-gray-100);
+}
+
+.ptp-trainer-card-price {
+    font-size: var(--ptp-font-size-base);
+    font-weight: 600;
+    color: var(--ptp-black);
+}
+
+/* =============================================
+   TABLET (768px - 1023px)
+   ============================================= */
+
+@media (min-width: 768px) {
+    .ptp-container {
+        padding-left: var(--ptp-space-lg);
+        padding-right: var(--ptp-space-lg);
+    }
+    
+    .ptp-h1 {
+        font-size: var(--ptp-font-size-3xl);
+    }
+    
+    .ptp-h2 {
+        font-size: var(--ptp-font-size-2xl);
+    }
+    
+    /* Profile */
+    .ptp-profile-cover {
+        height: 240px;
+    }
+    
+    .ptp-profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .ptp-profile-avatar-wrap {
+        margin-top: -60px;
+    }
+    
+    .ptp-profile-name {
+        font-size: var(--ptp-font-size-3xl);
+    }
+    
+    .ptp-profile-stats {
+        gap: var(--ptp-space-2xl);
+    }
+    
+    .ptp-stat-value {
+        font-size: var(--ptp-font-size-2xl);
+    }
+    
+    .ptp-profile-section {
+        padding: var(--ptp-space-xl) var(--ptp-space-lg);
+    }
+    
+    .ptp-section-title {
+        font-size: var(--ptp-font-size-xl);
+    }
+    
+    /* Trainer Grid */
+    .ptp-trainer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--ptp-space-lg);
+        padding: var(--ptp-space-lg);
+    }
+    
+    .ptp-trainer-card-image {
+        height: 220px;
+    }
+}
+
+/* =============================================
+   DESKTOP (1024px+)
+   ============================================= */
+
+@media (min-width: 1024px) {
+    .ptp-container {
+        max-width: 1280px;
+        padding-left: var(--ptp-space-xl);
+        padding-right: var(--ptp-space-xl);
+    }
+    
+    .ptp-h1 {
+        font-size: var(--ptp-font-size-4xl);
+    }
+    
+    .ptp-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--ptp-shadow-lg);
+    }
+    
+    .ptp-btn-primary:hover {
+        background: var(--ptp-gold-hover);
+    }
+    
+    /* Profile - Two column layout */
+    .ptp-profile {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        grid-template-rows: auto 1fr;
+        min-height: 100vh;
+    }
+    
+    .ptp-profile-hero {
+        grid-column: 1 / -1;
+    }
+    
+    .ptp-profile-content {
+        padding-bottom: var(--ptp-space-2xl);
+    }
+    
+    .ptp-profile-sidebar {
+        padding: var(--ptp-space-xl);
+        border-left: 1px solid var(--ptp-gray-200);
+        position: sticky;
+        top: 0;
+        height: fit-content;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    
+    /* Remove fixed book bar on desktop */
+    .ptp-book-bar {
+        position: static;
+        flex-direction: column;
+        border: none;
+        padding: 0;
+        gap: var(--ptp-space-lg);
+    }
+    
+    .ptp-book-bar-price {
+        text-align: center;
+    }
+    
+    .ptp-book-bar-price .price {
+        font-size: var(--ptp-font-size-4xl);
+    }
+    
+    .ptp-book-bar .ptp-btn {
+        width: 100%;
+    }
+    
+    .ptp-profile-cover {
+        height: 300px;
+    }
+    
+    .ptp-profile-avatar {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .ptp-profile-avatar-wrap {
+        margin-top: -70px;
+    }
+    
+    .ptp-profile-section {
+        padding: var(--ptp-space-2xl) var(--ptp-space-xl);
+        border-bottom: 1px solid var(--ptp-gray-200);
+    }
+    
+    /* Trainer Grid */
+    .ptp-trainer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--ptp-space-lg);
+        padding: var(--ptp-space-xl);
+    }
+    
+    .ptp-trainer-card {
+        cursor: pointer;
+    }
+    
+    .ptp-trainer-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--ptp-shadow-xl);
+    }
+    
+    .ptp-trainer-card-image {
+        height: 240px;
+    }
+}
+
+/* =============================================
+   LARGE DESKTOP (1440px+)
+   ============================================= */
+
+@media (min-width: 1440px) {
+    .ptp-container {
+        max-width: 1400px;
+    }
+    
+    .ptp-profile {
+        grid-template-columns: 1fr 440px;
+    }
+    
+    .ptp-trainer-grid {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}
+
+/* =============================================
+   UTILITY CLASSES
+   ============================================= */
+
+/* Display */
+.ptp-hidden { display: none !important; }
+.ptp-block { display: block !important; }
+
+.ptp-hidden-mobile { display: none; }
+.ptp-hidden-tablet { display: block; }
+.ptp-hidden-desktop { display: block; }
+
+@media (min-width: 768px) {
+    .ptp-hidden-mobile { display: block; }
+    .ptp-hidden-tablet { display: none; }
+}
+
+@media (min-width: 1024px) {
+    .ptp-hidden-tablet { display: block; }
+    .ptp-hidden-desktop { display: none; }
+}
+
+/* Spacing */
+.ptp-mt-0 { margin-top: 0; }
+.ptp-mt-sm { margin-top: var(--ptp-space-sm); }
+.ptp-mt-md { margin-top: var(--ptp-space-md); }
+.ptp-mt-lg { margin-top: var(--ptp-space-lg); }
+
+.ptp-mb-0 { margin-bottom: 0; }
+.ptp-mb-sm { margin-bottom: var(--ptp-space-sm); }
+.ptp-mb-md { margin-bottom: var(--ptp-space-md); }
+.ptp-mb-lg { margin-bottom: var(--ptp-space-lg); }
+
+.ptp-p-0 { padding: 0; }
+.ptp-p-sm { padding: var(--ptp-space-sm); }
+.ptp-p-md { padding: var(--ptp-space-md); }
+.ptp-p-lg { padding: var(--ptp-space-lg); }
+
+/* Text */
+.ptp-text-center { text-align: center; }
+.ptp-text-left { text-align: left; }
+.ptp-text-right { text-align: right; }
+
+.ptp-text-gold { color: var(--ptp-gold); }
+.ptp-text-gray { color: var(--ptp-gray-500); }
+.ptp-text-black { color: var(--ptp-black); }
+
+.ptp-font-bold { font-weight: 700; }
+.ptp-font-semibold { font-weight: 600; }
+.ptp-font-medium { font-weight: 500; }
+
+/* Background */
+.ptp-bg-white { background: var(--ptp-white); }
+.ptp-bg-gray { background: var(--ptp-gray-50); }
+.ptp-bg-gold { background: var(--ptp-gold); }
+
+/* =============================================
+   ACCESSIBILITY
+   ============================================= */
+
+/* Focus visible */
+.ptp-btn:focus-visible,
+.ptp-input:focus-visible,
+.ptp-trainer-card:focus-visible {
+    outline: 2px solid var(--ptp-gold);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .ptp-btn,
+    .ptp-trainer-card,
+    .ptp-input,
+    a,
+    button {
+        min-height: 44px;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .ptp-btn-primary {
+        border: 2px solid var(--ptp-black);
+    }
+    
+    .ptp-card {
+        border: 2px solid var(--ptp-black);
+    }
+}
+
+/* =============================================
+   FOOTER FIXES FOR MOBILE - v151.2
+   Prevents site footer from interfering with PTP pages
+   ============================================= */
+
+/* Hide WordPress/Theme footer on PTP standalone pages */
+@media (max-width: 1023px) {
+    /* Common footer selectors - hide on PTP pages */
+    body.ptp-checkout-page footer,
+    body.ptp-checkout-page .site-footer,
+    body.ptp-checkout-page .footer,
+    body.ptp-checkout-page #footer,
+    body.ptp-checkout-page .elementor-location-footer,
+    body.ptp-trainer-profile footer,
+    body.ptp-trainer-profile .site-footer,
+    body.ptp-trainer-profile .footer,
+    body.ptp-trainer-profile #footer,
+    body.ptp-trainer-profile .elementor-location-footer,
+    body.ptp-dashboard-page footer,
+    body.ptp-dashboard-page .site-footer,
+    body.ptp-dashboard-page .footer,
+    body.ptp-dashboard-page #footer,
+    body.ptp-dashboard-page .elementor-location-footer,
+    body.ptp-cart-page footer,
+    body.ptp-cart-page .site-footer,
+    body.ptp-cart-page .footer,
+    body.ptp-cart-page #footer,
+    body.ptp-cart-page .elementor-location-footer,
+    body.ptp-thank-you-page footer,
+    body.ptp-thank-you-page .site-footer,
+    body.ptp-thank-you-page .footer,
+    body.ptp-thank-you-page #footer,
+    body.ptp-thank-you-page .elementor-location-footer {
+        display: none !important;
+    }
+    
+    /* Also hide by page template classes */
+    .page-template-ptp-checkout footer,
+    .page-template-ptp-checkout .site-footer,
+    .page-template-ptp-checkout #footer,
+    .page-template-trainer-profile footer,
+    .page-template-trainer-profile .site-footer,
+    .page-template-trainer-profile #footer,
+    .page-template-parent-dashboard footer,
+    .page-template-parent-dashboard .site-footer,
+    .page-template-parent-dashboard #footer,
+    .page-template-trainer-dashboard footer,
+    .page-template-trainer-dashboard .site-footer,
+    .page-template-trainer-dashboard #footer {
+        display: none !important;
+    }
+}
+
+/* Content padding to prevent footer overlap */
+@media (max-width: 1023px) {
+    /* Trainer Profile */
+    .ptp-trainer-profile,
+    .tp2-profile-page,
+    .trainer-profile-v3 {
+        padding-bottom: 120px !important;
+        padding-bottom: calc(120px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Dashboards */
+    .ptp-parent-dashboard,
+    .ptp-trainer-dashboard,
+    .ptp-dashboard-container,
+    .dashboard-container {
+        padding-bottom: 100px !important;
+        padding-bottom: calc(100px + var(--ptp-safe-bottom, 0px)) !important;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+    
+    /* Checkout pages */
+    .ptp-checkout-page .checkout-main,
+    .checkout-container,
+    .ptp-cart-container {
+        padding-bottom: 140px !important;
+        padding-bottom: calc(140px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Training landing pages */
+    .ptp-training-landing,
+    .training-landing-page,
+    .free-training-landing {
+        padding-bottom: 100px !important;
+        padding-bottom: calc(100px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Camp pages */
+    .ptp-camp-product,
+    .camp-product-page,
+    .single-camp-product {
+        padding-bottom: 160px !important;
+        padding-bottom: calc(160px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Onboarding pages */
+    .ptp-onboarding,
+    .trainer-onboarding,
+    .onboarding-container {
+        padding-bottom: 120px !important;
+        padding-bottom: calc(120px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* All access pages */
+    .ptp-all-access,
+    .all-access-container {
+        padding-bottom: 100px !important;
+    }
+    
+    /* Messaging */
+    .ptp-messaging-page,
+    .messaging-container {
+        padding-bottom: 80px !important;
+        padding-bottom: calc(80px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+}
+
+/* Fixed/Sticky bottom elements - ensure proper positioning */
+@media (max-width: 1023px) {
+    /* Mobile sticky footer bars */
+    .mobile-summary,
+    .mobile-footer-bar,
+    .ptp-sticky-footer,
+    .ptp-mobile-cta,
+    .booking-footer-mobile,
+    .tp2-booking-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 400 !important;
+        padding-bottom: var(--ptp-safe-bottom, 0px) !important;
+        background: var(--ptp-white, #fff) !important;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    /* Camp product sticky add to cart */
+    .camp-sticky-footer,
+    .ptp-camp-sticky-bar {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 400 !important;
+        padding-bottom: var(--ptp-safe-bottom, 0px) !important;
+    }
+}
+
+/* Prevent body scroll when modals are open */
+body.ptp-modal-open,
+body.ptp-sheet-open {
+    overflow: hidden !important;
+}
+
+/* Safe area handling for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    @media (max-width: 1023px) {
+        .mobile-summary,
+        .mobile-footer-bar,
+        .ptp-sticky-footer,
+        .ptp-mobile-cta,
+        .camp-sticky-footer {
+            padding-bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+        }
+        
+        /* Main content areas */
+        .ptp-main-content,
+        .checkout-main,
+        .dashboard-content,
+        .profile-content {
+            padding-bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+        }
+    }
+}
+
+/* Specific page fixes */
+@media (max-width: 767px) {
+    /* Trainer profile booking section */
+    .tp2-booking-section,
+    .booking-section {
+        margin-bottom: 100px !important;
+    }
+    
+    /* Package selector */
+    .tp2-packages,
+    .package-selector {
+        padding-bottom: 20px !important;
+    }
+    
+    /* Calendar section */
+    .tp2-calendar-section,
+    .calendar-section,
+    .schedule-calendar {
+        margin-bottom: 80px !important;
+    }
+    
+    /* Reviews section */
+    .tp2-reviews,
+    .reviews-section {
+        padding-bottom: 120px !important;
+    }
+    
+    /* FAQ section */
+    .tp2-faq,
+    .faq-section {
+        padding-bottom: 100px !important;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+    .mobile-summary,
+    .mobile-footer-bar,
+    .ptp-sticky-footer {
+        padding: 12px 16px !important;
+        padding-bottom: calc(12px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Reduce content padding slightly */
+    .checkout-main,
+    .ptp-dashboard-container {
+        padding-bottom: 110px !important;
+    }
+}
+
+/* Landscape orientation fixes */
+@media (max-width: 896px) and (orientation: landscape) {
+    .mobile-summary,
+    .mobile-footer-bar,
+    .ptp-sticky-footer {
+        padding: 10px 20px !important;
+        padding-bottom: calc(10px + var(--ptp-safe-bottom, 0px)) !important;
+    }
+    
+    /* Less aggressive padding in landscape */
+    .checkout-main,
+    .ptp-dashboard-container,
+    .ptp-trainer-profile {
+        padding-bottom: 80px !important;
+    }
+}
+
+/* Tablet portrait mode */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .mobile-summary,
+    .mobile-footer-bar {
+        max-width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* Make sure elementor footer doesn't show on ptp pages */
+@media (max-width: 1023px) {
+    .ptp-standalone-page .elementor-location-footer,
+    .ptp-standalone-page footer.elementor-element,
+    .ptp-standalone-page .footer-wrapper,
+    .ptp-standalone-page .ast-footer-overlay-wrap,
+    .ptp-standalone-page #colophon,
+    .ptp-standalone-page .site-footer-wrapper {
+        display: none !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+    }
+}

@@ -1,0 +1,792 @@
+/**
+ * PTP All-Access Pass CSS v94
+ * Mobile-first, PTP Design System
+ * Fonts: Oswald (display), Inter (body)
+ * Colors: Gold #FCB900, Black #0A0A0A
+ */
+
+/* ================================================
+   BASE & RESET
+   ================================================ */
+.ptp-aa-page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #0A0A0A;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+.ptp-aa-page * { box-sizing: border-box; }
+.ptp-aa-container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 16px; 
+}
+
+/* ================================================
+   BUTTONS
+   ================================================ */
+.ptp-btn {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid #0A0A0A;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 4px 4px 0 #0A0A0A;
+    -webkit-tap-highlight-color: transparent;
+}
+.ptp-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #0A0A0A; }
+.ptp-btn-gold { background: #FCB900; color: #0A0A0A; }
+.ptp-btn-black { background: #0A0A0A; color: #fff; }
+.ptp-btn-lg { padding: 16px 32px; font-size: 16px; }
+.ptp-btn-full { width: 100%; }
+
+@media (hover: hover) {
+    .ptp-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #0A0A0A; }
+    .ptp-btn-black:hover { background: #FCB900; color: #0A0A0A; }
+}
+
+/* ================================================
+   HERO SECTION
+   ================================================ */
+.ptp-aa-hero {
+    background: #0A0A0A;
+    color: #fff;
+    padding: 48px 16px;
+    text-align: center;
+}
+.ptp-aa-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    line-height: 1.1;
+}
+.ptp-aa-hero p { color: #a3a3a3; margin: 0; font-size: 15px; }
+
+.ptp-aa-hero-full { padding: 60px 16px; }
+.ptp-aa-label {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 6px 12px;
+    margin-bottom: 16px;
+}
+.ptp-aa-tagline { margin-bottom: 24px !important; }
+
+/* Price Anchor Box */
+.ptp-aa-anchor {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid #FCB900;
+    padding: 20px 16px;
+    margin: 24px auto;
+    max-width: 400px;
+}
+.ptp-anchor-item { text-align: center; }
+.ptp-anchor-label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #737373;
+    margin-bottom: 4px;
+}
+.ptp-anchor-strike {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    text-decoration: line-through;
+    color: #525252;
+}
+.ptp-anchor-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #FCB900;
+    line-height: 1;
+}
+.ptp-anchor-badge, .ptp-anchor-pct {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 4px 8px;
+    margin: 2px;
+}
+.ptp-aa-weekly { 
+    font-size: 13px; 
+    color: #a3a3a3; 
+    margin-top: 16px !important; 
+}
+.ptp-aa-weekly strong { color: #FCB900; }
+
+/* ================================================
+   TIER CARDS (2-Camp / 3-Camp / All-Access)
+   ================================================ */
+.ptp-aa-tiers { 
+    padding: 48px 16px; 
+    background: #f5f5f5; 
+}
+.ptp-aa-tiers h2, .ptp-aa-stack h2, .ptp-aa-payment h2, .ptp-aa-faq h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 8px;
+}
+.ptp-aa-sub { 
+    font-size: 14px; 
+    color: #525252; 
+    text-align: center; 
+    margin: 0 0 32px; 
+}
+
+.ptp-tier-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.ptp-tier-card {
+    position: relative;
+    background: #fff;
+    border: 2px solid #0A0A0A;
+    padding: 24px 20px;
+    text-align: center;
+}
+.ptp-tier-hl {
+    border-color: #FCB900;
+    box-shadow: 0 4px 20px rgba(252, 185, 0, 0.2);
+}
+.ptp-tier-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 4px 10px;
+    white-space: nowrap;
+}
+.ptp-tier-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+}
+.ptp-tier-desc {
+    font-size: 13px;
+    color: #737373;
+    margin: 0 0 16px;
+}
+.ptp-tier-pricing { margin-bottom: 16px; }
+.ptp-tier-value {
+    display: block;
+    font-size: 12px;
+    color: #737373;
+    text-decoration: line-through;
+}
+.ptp-tier-price {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+.ptp-tier-hl .ptp-tier-price { color: #d4a000; }
+.ptp-tier-save {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 4px 8px;
+    margin-top: 4px;
+}
+
+/* Camp Pack Display */
+.ptp-tier-camps {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.ptp-camp-icon { font-size: 32px; }
+.ptp-camp-count {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+}
+.ptp-camp-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.ptp-camp-rate {
+    font-size: 12px;
+    color: #737373;
+    margin-top: 4px;
+}
+
+/* All-Access Component List */
+.ptp-tier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    text-align: left;
+}
+.ptp-tier-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 13px;
+}
+.ptp-tier-list li:last-child { border-bottom: none; }
+.ptp-tier-icon { font-size: 18px; width: 24px; text-align: center; }
+.ptp-tier-list strong { color: #d4a000; }
+
+/* Upgrade Note */
+.ptp-tier-note {
+    margin-top: 24px;
+    padding: 16px;
+    background: #fff;
+    border: 2px solid #FCB900;
+    text-align: center;
+}
+.ptp-tier-note p { margin: 0; font-size: 14px; }
+
+/* ================================================
+   VALUE STACK (All-Access Page)
+   ================================================ */
+.ptp-aa-stack { 
+    padding: 48px 16px; 
+    background: #fff; 
+}
+
+.ptp-stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.ptp-stack-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 2px solid #0A0A0A;
+    padding: 12px;
+}
+.ptp-stack-icon { font-size: 24px; width: 32px; text-align: center; flex-shrink: 0; }
+.ptp-stack-info { flex: 1; min-width: 0; }
+.ptp-stack-name {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ptp-stack-qty { font-size: 11px; color: #737373; }
+.ptp-stack-value { text-align: right; flex-shrink: 0; }
+.ptp-stack-rate { display: block; font-size: 10px; color: #737373; }
+.ptp-stack-total { 
+    display: block; 
+    font-family: 'Oswald', sans-serif; 
+    font-size: 16px; 
+    font-weight: 700; 
+}
+
+.ptp-stack-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 16px;
+    background: #FCB900;
+    border: 2px solid #0A0A0A;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.ptp-stack-total span:last-child { font-size: 24px; }
+
+/* ================================================
+   PAYMENT OPTIONS
+   ================================================ */
+.ptp-aa-payment { 
+    padding: 48px 16px; 
+    background: #f5f5f5; 
+}
+
+.ptp-payment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+.ptp-payment-card {
+    position: relative;
+    background: #fff;
+    border: 2px solid #0A0A0A;
+    padding: 20px 16px;
+    text-align: center;
+}
+.ptp-payment-hl { border-color: #FCB900; }
+.ptp-payment-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 4px 10px;
+}
+.ptp-payment-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #525252;
+    margin: 0 0 4px;
+}
+.ptp-payment-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.ptp-payment-price span { font-size: 14px; color: #737373; }
+.ptp-payment-desc { font-size: 12px; color: #737373; margin: 0 0 12px; }
+
+.ptp-aa-compare { 
+    text-align: center; 
+    margin-top: 20px; 
+}
+.ptp-aa-compare a { color: #0A0A0A; font-weight: 500; font-size: 14px; }
+
+/* ================================================
+   SERVICE PAGES (Video Analysis, Mentorship)
+   ================================================ */
+.ptp-svc-hero {
+    background: #0A0A0A;
+    color: #fff;
+    padding: 48px 16px;
+    text-align: center;
+}
+.ptp-svc-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+.ptp-svc-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+.ptp-svc-hero p { color: #a3a3a3; margin: 0; }
+
+.ptp-svc-main { padding: 48px 16px; background: #f5f5f5; }
+.ptp-svc-box {
+    max-width: 360px;
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid #0A0A0A;
+    padding: 28px 20px;
+    text-align: center;
+}
+.ptp-svc-price span { 
+    font-family: 'Oswald', sans-serif; 
+    font-size: 44px; 
+    font-weight: 700; 
+}
+.ptp-svc-qty { margin: 20px 0; }
+.ptp-svc-qty label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #525252;
+    margin-bottom: 8px;
+}
+.ptp-qty-wrap { display: flex; justify-content: center; }
+.ptp-qty-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #0A0A0A;
+    color: #fff;
+    border: 2px solid #0A0A0A;
+    cursor: pointer;
+}
+.ptp-qty-btn:active { background: #FCB900; color: #0A0A0A; }
+#svc-qty {
+    width: 60px;
+    height: 44px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #0A0A0A;
+    border-left: none;
+    border-right: none;
+}
+.ptp-svc-total {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+#svc-total { color: #d4a000; }
+.ptp-svc-upsell {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fffbeb;
+    border: 2px solid #FCB900;
+}
+.ptp-svc-upsell p { margin: 0 0 4px; font-size: 13px; }
+.ptp-svc-upsell a { color: #0A0A0A; font-weight: 600; font-size: 13px; }
+
+/* ================================================
+   FAQ
+   ================================================ */
+.ptp-aa-faq { padding: 48px 16px; background: #fff; }
+.ptp-faq-list { max-width: 600px; margin: 0 auto; }
+.ptp-faq-item { 
+    border: 2px solid #0A0A0A; 
+    background: #fff; 
+    margin-bottom: 6px; 
+}
+.ptp-faq-q {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: left;
+    background: #fff;
+    border: none;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+.ptp-faq-q:active { background: #f5f5f5; }
+.ptp-faq-toggle { 
+    font-size: 20px; 
+    color: #FCB900; 
+    transition: transform 0.2s; 
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+.ptp-faq-item.active .ptp-faq-toggle { transform: rotate(45deg); }
+.ptp-faq-a { 
+    display: none; 
+    padding: 0 16px 16px; 
+    color: #525252; 
+    line-height: 1.6;
+    font-size: 14px;
+}
+.ptp-faq-item.active .ptp-faq-a { display: block; }
+
+/* ================================================
+   CTA SECTION
+   ================================================ */
+.ptp-aa-cta {
+    padding: 60px 16px;
+    background: #0A0A0A;
+    text-align: center;
+}
+.ptp-aa-cta h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 8px;
+}
+.ptp-aa-cta p { color: #a3a3a3; margin: 0 0 24px; font-size: 14px; }
+
+/* ================================================
+   DASHBOARD
+   ================================================ */
+.ptp-dash-header {
+    background: #0A0A0A;
+    color: #fff;
+    padding: 40px 16px;
+    text-align: center;
+}
+.ptp-dash-badge {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    background: #FCB900;
+    color: #0A0A0A;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+}
+.ptp-dash-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+}
+.ptp-dash-header p { color: #a3a3a3; margin: 0; font-size: 14px; }
+
+.ptp-dash-main { padding: 32px 16px; }
+.ptp-dash-main h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+}
+.ptp-dash-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+.ptp-dash-card { 
+    background: #fff; 
+    border: 2px solid #0A0A0A; 
+    padding: 16px; 
+}
+.ptp-dash-card-head { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    margin-bottom: 8px; 
+}
+.ptp-dash-card-head span:first-child { font-size: 20px; }
+.ptp-dash-card-head span:last-child { 
+    font-family: 'Oswald', sans-serif; 
+    font-size: 12px; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+}
+.ptp-dash-num { 
+    font-family: 'Oswald', sans-serif; 
+    font-size: 28px; 
+    font-weight: 700; 
+    color: #d4a000; 
+}
+.ptp-dash-of { font-size: 12px; color: #737373; margin-left: 4px; }
+.ptp-dash-bar { height: 6px; background: #e5e5e5; margin: 10px 0; }
+.ptp-dash-fill { height: 100%; background: #FCB900; }
+.ptp-dash-action {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background: #0A0A0A;
+    color: #fff;
+    padding: 10px;
+}
+.ptp-dash-action:active { background: #FCB900; color: #0A0A0A; }
+
+.ptp-no-membership, .ptp-login-msg { 
+    text-align: center; 
+    padding: 60px 20px; 
+}
+.ptp-no-membership h2 { 
+    font-family: 'Oswald', sans-serif; 
+    margin-bottom: 8px; 
+}
+
+/* ================================================
+   MODAL
+   ================================================ */
+.ptp-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.ptp-modal-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(0, 0, 0, 0.85); 
+}
+.ptp-modal-box {
+    position: relative;
+    background: #fff;
+    border: 2px solid #0A0A0A;
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.ptp-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #737373;
+    padding: 4px;
+}
+.ptp-modal-content { padding: 24px 20px; }
+.ptp-modal-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+}
+.ptp-form-row { margin-bottom: 16px; }
+.ptp-form-row label {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #525252;
+    margin-bottom: 6px;
+}
+.ptp-form-row input {
+    width: 100%;
+    font-size: 16px; /* Prevents iOS zoom */
+    border: 2px solid #d4d4d4;
+    padding: 12px;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+.ptp-form-row input:focus { outline: none; border-color: #FCB900; }
+.ptp-checkout-summary {
+    display: flex;
+    justify-content: space-between;
+    background: #f5f5f5;
+    border: 2px solid #e5e5e5;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+.ptp-secure { 
+    font-size: 12px; 
+    color: #737373; 
+    text-align: center; 
+    margin-top: 12px; 
+}
+
+.ptp-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e5e5e5;
+    border-top-color: #FCB900;
+    border-radius: 50%;
+    animation: ptp-spin 0.8s linear infinite;
+    margin: 24px auto;
+}
+@keyframes ptp-spin { to { transform: rotate(360deg); } }
+#ptp-modal-loading { text-align: center; }
+#ptp-modal-loading p { color: #737373; font-size: 14px; }
+
+/* ================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================ */
+
+/* Small phones (375px+) */
+@media (min-width: 375px) {
+    .ptp-aa-hero h1 { font-size: 40px; }
+    .ptp-anchor-price { font-size: 56px; }
+}
+
+/* Large phones (480px+) */
+@media (min-width: 480px) {
+    .ptp-aa-container { padding: 0 24px; }
+    .ptp-aa-hero h1 { font-size: 48px; }
+    .ptp-tier-price { font-size: 44px; }
+    .ptp-tier-grid { gap: 20px; }
+}
+
+/* Tablets (600px+) */
+@media (min-width: 600px) {
+    .ptp-aa-hero { padding: 60px 24px; }
+    .ptp-aa-hero h1 { font-size: 56px; }
+    .ptp-aa-anchor { flex-direction: row; justify-content: center; gap: 32px; max-width: 500px; }
+    .ptp-aa-tiers, .ptp-aa-stack, .ptp-aa-payment, .ptp-aa-faq { padding: 60px 24px; }
+    
+    /* 2 columns for tier grid - camp packs side by side, all-access full width */
+    .ptp-tier-grid { grid-template-columns: repeat(2, 1fr); }
+    .ptp-tier-card:last-child { grid-column: 1 / -1; max-width: 450px; margin: 0 auto; }
+    
+    .ptp-payment-grid { grid-template-columns: repeat(3, 1fr); }
+    .ptp-dash-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Desktop (900px+) */
+@media (min-width: 900px) {
+    .ptp-aa-hero { padding: 80px 40px; }
+    .ptp-aa-hero-full { padding: 100px 40px; }
+    .ptp-aa-hero h1 { font-size: 72px; }
+    .ptp-anchor-price { font-size: 64px; }
+    .ptp-aa-tiers, .ptp-aa-stack, .ptp-aa-payment, .ptp-aa-faq { padding: 80px 40px; }
+    
+    /* 3 columns for tier grid */
+    .ptp-tier-grid { grid-template-columns: repeat(3, 1fr); }
+    .ptp-tier-card:last-child { grid-column: auto; max-width: none; margin: 0; }
+    .ptp-tier-hl { transform: scale(1.03); z-index: 1; }
+    
+    .ptp-dash-grid { grid-template-columns: repeat(3, 1fr); }
+    
+    /* Hover effects for desktop */
+    .ptp-stack-item:hover { box-shadow: 4px 4px 0 #0A0A0A; transform: translate(-2px, -2px); }
+    .ptp-tier-card:hover:not(.ptp-tier-hl) { box-shadow: 4px 4px 0 #0A0A0A; }
+}
+
+/* ================================================
+   TOUCH & ACCESSIBILITY
+   ================================================ */
+@media (hover: none) {
+    .ptp-stack-item:hover, .ptp-tier-card:hover { transform: none; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ptp-btn, .ptp-faq-toggle, .ptp-spinner, .ptp-stack-item, .ptp-tier-card {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Safe areas for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .ptp-modal-box { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+}

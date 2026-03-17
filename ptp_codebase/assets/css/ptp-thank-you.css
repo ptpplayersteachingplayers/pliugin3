@@ -1,0 +1,728 @@
+/* =============================================
+   PTP THANK YOU PAGE v175
+   Complete Upsell Flow with PTP Design System
+   ============================================= */
+
+/* Import PTP Design System Variables */
+.ptp-ty {
+    /* Colors from design system */
+    --ptp-gold: #FCB900;
+    --ptp-gold-hover: #E5A800;
+    --ptp-gold-light: rgba(252, 185, 0, 0.1);
+    --ptp-gold-glow: rgba(252, 185, 0, 0.4);
+    --ptp-black: #0A0A0A;
+    --ptp-gray-800: #262626;
+    --ptp-gray-700: #404040;
+    --ptp-gray-600: #525252;
+    --ptp-gray-500: #737373;
+    --ptp-success: #22C55E;
+    --ptp-success-light: rgba(34, 197, 94, 0.1);
+    --ptp-error: #EF4444;
+    --ptp-info: #3B82F6;
+    --ptp-info-light: rgba(59, 130, 246, 0.1);
+    
+    /* Typography */
+    --ptp-font-display: 'Oswald', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ptp-font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Spacing */
+    --ptp-space-2: 8px;
+    --ptp-space-3: 12px;
+    --ptp-space-4: 16px;
+    --ptp-space-5: 20px;
+    --ptp-space-6: 24px;
+    
+    /* Border */
+    --ptp-border-width: 2px;
+}
+
+.ptp-ty {
+    width: 100%;
+    max-width: 100%;
+    margin-left: calc(-50vw + 50%);
+    background: var(--ptp-black);
+    min-height: 100vh;
+    padding-bottom: 60px;
+    font-family: var(--ptp-font-body);
+    color: #fff;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.ptp-ty * { box-sizing: border-box; }
+
+/* ===== HERO ===== */
+.ptp-ty-hero {
+    text-align: center;
+    padding: 48px 20px 32px;
+}
+
+.ptp-ty-check {
+    width: 72px;
+    height: 72px;
+    background: var(--ptp-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 40px var(--ptp-gold-glow);
+}
+
+.ptp-ty-check svg {
+    width: 36px;
+    height: 36px;
+    stroke: var(--ptp-black);
+    stroke-width: 3;
+    fill: none;
+}
+
+.ptp-ty-title {
+    font-family: var(--ptp-font-display);
+    font-size: clamp(32px, 9vw, 48px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.ptp-ty-title .gold { color: var(--ptp-gold); }
+
+.ptp-ty-subtitle {
+    font-family: var(--ptp-font-body);
+    color: var(--ptp-gray-500);
+    font-size: 14px;
+    margin: 0;
+}
+
+.ptp-ty-subtitle strong { color: #fff; }
+
+/* ===== CONTAINER ===== */
+.ptp-ty-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 var(--ptp-space-4);
+}
+
+/* ===== CARDS ===== */
+.ptp-ty-card {
+    background: var(--ptp-gray-800);
+    border: var(--ptp-border-width) solid var(--ptp-gray-700);
+    margin-bottom: var(--ptp-space-4);
+}
+
+.ptp-ty-card-header {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+    padding: var(--ptp-space-3) var(--ptp-space-4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ptp-ty-card-header.dark {
+    background: var(--ptp-gray-800);
+    color: #fff;
+    border-bottom: 1px solid var(--ptp-gray-700);
+}
+
+.ptp-ty-card-label {
+    font-family: var(--ptp-font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.ptp-ty-card-value {
+    font-family: var(--ptp-font-display);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.ptp-ty-card-body { padding: var(--ptp-space-4); }
+
+/* ===== ORDER DETAILS ===== */
+.ptp-ty-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--ptp-gray-700);
+    font-size: 14px;
+}
+
+.ptp-ty-detail:last-child { border-bottom: none; }
+
+.ptp-ty-detail-label { color: var(--ptp-gray-500); }
+
+.ptp-ty-detail-value {
+    color: #fff;
+    font-weight: 500;
+    text-align: right;
+    max-width: 65%;
+}
+
+.ptp-ty-detail-value.gold {
+    color: var(--ptp-gold);
+    font-family: var(--ptp-font-display);
+    font-size: 18px;
+}
+
+/* ===== UPSELL CARDS ===== */
+.ptp-ty-upsell {
+    background: linear-gradient(135deg, var(--ptp-gold-light) 0%, rgba(255,140,0,0.08) 100%);
+    border: var(--ptp-border-width) solid var(--ptp-gold);
+    margin-bottom: var(--ptp-space-4);
+    position: relative;
+    overflow: hidden;
+}
+
+.ptp-ty-upsell.secondary {
+    background: linear-gradient(135deg, var(--ptp-info-light) 0%, rgba(99,102,241,0.08) 100%);
+    border-color: var(--ptp-info);
+}
+
+.ptp-ty-upsell-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--ptp-error);
+    color: #fff;
+    padding: 6px 12px;
+    font-family: var(--ptp-font-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.ptp-ty-upsell-badge.blue { background: var(--ptp-info); }
+
+.ptp-ty-upsell-header {
+    display: flex;
+    gap: 14px;
+    padding: var(--ptp-space-5) var(--ptp-space-4) var(--ptp-space-4);
+    align-items: flex-start;
+}
+
+.ptp-ty-upsell-photo {
+    width: 60px;
+    height: 60px;
+    border: var(--ptp-border-width) solid var(--ptp-gold);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ptp-ty-upsell-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--ptp-info-light);
+    border: var(--ptp-border-width) solid var(--ptp-info);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.ptp-ty-upsell-tag {
+    font-family: var(--ptp-font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--ptp-gold);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.ptp-ty-upsell-tag.blue { color: var(--ptp-info); }
+
+.ptp-ty-upsell-title {
+    font-family: var(--ptp-font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ptp-ty-upsell-subtitle {
+    font-size: 13px;
+    color: var(--ptp-gray-500);
+}
+
+.ptp-ty-upsell-body { padding: 0 var(--ptp-space-4) var(--ptp-space-4); }
+
+.ptp-ty-upsell-pitch {
+    background: rgba(0,0,0,0.3);
+    padding: var(--ptp-space-3) 14px;
+    margin-bottom: var(--ptp-space-4);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ptp-gray-500);
+}
+
+.ptp-ty-upsell-pitch strong { color: var(--ptp-gold); }
+.ptp-ty-upsell-pitch strong.blue { color: var(--ptp-info); }
+
+.ptp-ty-upsell-pricing {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.ptp-ty-price-old {
+    text-decoration: line-through;
+    color: var(--ptp-gray-600);
+    font-size: 16px;
+}
+
+.ptp-ty-price-new {
+    font-family: var(--ptp-font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ptp-gold);
+    margin-left: 10px;
+}
+
+.ptp-ty-price-new.blue { color: var(--ptp-info); }
+
+.ptp-ty-savings {
+    background: var(--ptp-success-light);
+    color: var(--ptp-success);
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ptp-ty-upsell-btn {
+    display: block;
+    width: 100%;
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+    border: none;
+    padding: 16px 20px;
+    font-family: var(--ptp-font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.1s ease;
+    min-height: 52px;
+}
+
+.ptp-ty-upsell-btn:hover { background: var(--ptp-gold-hover); }
+
+.ptp-ty-upsell-btn.blue {
+    background: var(--ptp-info);
+    color: #fff;
+}
+
+.ptp-ty-upsell-btn.blue:hover { background: #2563EB; }
+
+.ptp-ty-upsell-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.ptp-ty-upsell-note {
+    font-size: 11px;
+    color: var(--ptp-gray-600);
+    text-align: center;
+    margin-top: var(--ptp-space-2);
+}
+
+/* Camp Options */
+.ptp-ty-camp-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--ptp-space-4);
+}
+
+.ptp-ty-camp-option {
+    background: rgba(0,0,0,0.3);
+    border: var(--ptp-border-width) solid var(--ptp-gray-700);
+    padding: var(--ptp-space-3);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-height: 48px;
+}
+
+.ptp-ty-camp-option:hover,
+.ptp-ty-camp-option.selected {
+    border-color: var(--ptp-info);
+    background: var(--ptp-info-light);
+}
+
+.ptp-ty-camp-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.ptp-ty-camp-option-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+}
+
+.ptp-ty-camp-option-price {
+    text-align: right;
+}
+
+.ptp-ty-camp-option-price .old {
+    text-decoration: line-through;
+    color: var(--ptp-gray-600);
+    font-size: 12px;
+}
+
+.ptp-ty-camp-option-price .new {
+    color: var(--ptp-info);
+    font-family: var(--ptp-font-display);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.ptp-ty-camp-option-meta {
+    font-size: 12px;
+    color: var(--ptp-gray-500);
+}
+
+.ptp-ty-camp-option-meta span {
+    margin-right: 12px;
+}
+
+/* Success State */
+.ptp-ty-success {
+    background: var(--ptp-success-light);
+    border: var(--ptp-border-width) solid var(--ptp-success);
+    padding: var(--ptp-space-6) var(--ptp-space-4);
+    text-align: center;
+    margin-bottom: var(--ptp-space-4);
+}
+
+.ptp-ty-success-icon { font-size: 36px; margin-bottom: var(--ptp-space-2); }
+
+.ptp-ty-success-title {
+    font-family: var(--ptp-font-display);
+    font-size: 20px;
+    color: var(--ptp-success);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.ptp-ty-success-text { font-size: 13px; color: var(--ptp-gray-500); }
+
+/* ===== WHAT'S NEXT ===== */
+.ptp-ty-steps { padding: var(--ptp-space-4); }
+
+.ptp-ty-step {
+    display: flex;
+    gap: 14px;
+    padding: var(--ptp-space-3) 0;
+    border-bottom: 1px solid var(--ptp-gray-700);
+}
+
+.ptp-ty-step:last-child { border-bottom: none; }
+
+.ptp-ty-step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--ptp-gray-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ptp-font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ptp-gold);
+    flex-shrink: 0;
+}
+
+.ptp-ty-step-title {
+    font-weight: 600;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.ptp-ty-step-desc { font-size: 12px; color: var(--ptp-gray-500); }
+
+/* ===== REFERRAL ===== */
+.ptp-ty-referral { text-align: center; padding: var(--ptp-space-4); }
+
+.ptp-ty-referral-title {
+    font-family: var(--ptp-font-display);
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: var(--ptp-space-2);
+}
+
+.ptp-ty-referral-desc {
+    font-size: 12px;
+    color: var(--ptp-gray-500);
+    margin-bottom: var(--ptp-space-3);
+}
+
+.ptp-ty-referral-code {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ptp-black);
+    border: var(--ptp-border-width) dashed var(--ptp-gray-600);
+    padding: var(--ptp-space-3) var(--ptp-space-5);
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--ptp-gold);
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+    min-height: 48px;
+}
+
+.ptp-ty-referral-code:hover { border-color: var(--ptp-gold); }
+
+.ptp-ty-referral-code svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--ptp-gray-500);
+}
+
+/* ===== BUTTONS ===== */
+.ptp-ty-btns {
+    display: flex;
+    gap: var(--ptp-space-3);
+    margin-bottom: var(--ptp-space-6);
+}
+
+.ptp-ty-btn {
+    flex: 1;
+    padding: 14px var(--ptp-space-4);
+    font-family: var(--ptp-font-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s ease;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ptp-ty-btn-gold {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-ty-btn-gold:hover { background: var(--ptp-gold-hover); }
+
+.ptp-ty-btn-outline {
+    background: transparent;
+    color: #fff;
+    border: var(--ptp-border-width) solid var(--ptp-gray-600);
+}
+
+.ptp-ty-btn-outline:hover {
+    border-color: var(--ptp-gold);
+    color: var(--ptp-gold);
+}
+
+/* ===== FOOTER ===== */
+.ptp-ty-footer {
+    text-align: center;
+    padding: var(--ptp-space-5);
+    font-size: 12px;
+    color: var(--ptp-gray-600);
+}
+
+.ptp-ty-footer a { color: var(--ptp-gold); text-decoration: none; }
+
+.ptp-ty-footer-brand {
+    font-family: var(--ptp-font-display);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: var(--ptp-space-2);
+    color: var(--ptp-gray-600);
+}
+
+/* ===== LOADING SPINNER ===== */
+.ptp-ty-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: ptp-spin 0.8s linear infinite;
+    margin-right: var(--ptp-space-2);
+    vertical-align: middle;
+}
+
+@keyframes ptp-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+/* Touch-friendly tap targets (minimum 44px) */
+.ptp-ty-upsell-btn,
+.ptp-ty-btn,
+.ptp-ty-camp-option,
+.ptp-ty-referral-code {
+    min-height: 48px;
+    -webkit-tap-highlight-color: rgba(252, 185, 0, 0.2);
+}
+
+/* Prevent text size adjustment on orientation change */
+.ptp-ty {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Safe area padding for notched devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .ptp-ty {
+        padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    }
+}
+
+/* Small phones (iPhone SE, etc) */
+@media (max-width: 374px) {
+    .ptp-ty-hero { padding: 32px 12px 20px; }
+    .ptp-ty-container { padding: 0 12px; }
+    .ptp-ty-title { font-size: 28px; }
+    .ptp-ty-check { width: 60px; height: 60px; }
+    .ptp-ty-check svg { width: 28px; height: 28px; }
+    
+    .ptp-ty-upsell-header { 
+        flex-direction: column; 
+        text-align: center;
+        padding: 16px 12px 12px;
+    }
+    .ptp-ty-upsell-photo, .ptp-ty-upsell-icon { margin: 0 auto 8px; }
+    .ptp-ty-upsell-body { padding: 0 12px 12px; }
+    .ptp-ty-upsell-pitch { padding: 10px 12px; font-size: 12px; }
+    .ptp-ty-price-new { font-size: 26px; }
+    
+    .ptp-ty-btns { flex-direction: column; gap: 8px; }
+    .ptp-ty-btn { padding: 16px 12px; }
+    
+    .ptp-ty-camp-option { padding: 10px; }
+    .ptp-ty-camp-option-name { font-size: 13px; }
+    
+    .ptp-ty-referral-code { 
+        font-size: 16px; 
+        padding: 10px 16px;
+        letter-spacing: 2px;
+    }
+    
+    .ptp-ty-detail { 
+        flex-direction: column; 
+        gap: 2px;
+        align-items: flex-start;
+    }
+    .ptp-ty-detail-value { 
+        text-align: left; 
+        max-width: 100%; 
+    }
+}
+
+/* Standard phones */
+@media (max-width: 480px) {
+    .ptp-ty-hero { padding: 40px 16px 24px; }
+    .ptp-ty-btns { flex-direction: column; }
+    
+    .ptp-ty-upsell-badge {
+        font-size: 9px;
+        padding: 5px 10px;
+    }
+    
+    .ptp-ty-camp-option-header {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .ptp-ty-camp-option-price {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .ptp-ty-camp-option-price .old { font-size: 14px; }
+    .ptp-ty-camp-option-price .new { font-size: 18px; }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .ptp-ty-hero { padding: 24px 16px 16px; }
+    .ptp-ty-check { width: 48px; height: 48px; margin-bottom: 12px; }
+    .ptp-ty-check svg { width: 24px; height: 24px; }
+    .ptp-ty-title { font-size: 28px; margin-bottom: 4px; }
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .ptp-ty-container { max-width: 520px; }
+    .ptp-ty-hero { padding: 60px 20px 40px; }
+    .ptp-ty-title { font-size: 52px; }
+    
+    .ptp-ty-upsell-photo, .ptp-ty-upsell-icon { 
+        width: 72px; 
+        height: 72px; 
+    }
+    
+    .ptp-ty-btns { 
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+/* Hover states for non-touch devices */
+@media (hover: hover) {
+    .ptp-ty-upsell-btn:hover { 
+        background: var(--ptp-gold-hover, #E5A800);
+        transform: translateY(-1px);
+    }
+    .ptp-ty-upsell-btn.blue:hover { background: #2563EB; }
+    .ptp-ty-btn-gold:hover { background: var(--ptp-gold-hover, #E5A800); }
+    .ptp-ty-btn-outline:hover {
+        border-color: var(--ptp-gold, #FCB900);
+        color: var(--ptp-gold, #FCB900);
+    }
+    .ptp-ty-camp-option:hover {
+        border-color: #3B82F6;
+        background: rgba(59,130,246,0.1);
+    }
+    .ptp-ty-referral-code:hover {
+        border-color: var(--ptp-gold, #FCB900);
+    }
+}
+
+/* Active states for touch */
+.ptp-ty-upsell-btn:active,
+.ptp-ty-btn:active {
+    transform: scale(0.98);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .ptp-ty-spinner { animation: none; }
+    .ptp-ty-upsell-btn,
+    .ptp-ty-btn { transition: none; }
+}

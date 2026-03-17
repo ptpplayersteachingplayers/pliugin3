@@ -1,0 +1,180 @@
+/**
+ * PTP Camp Admin Styles
+ * @version 146.0.0
+ */
+
+.ptp-camp-admin .ptp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.ptp-camp-admin .ptp-stat-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ptp-camp-admin .ptp-stat-card.highlight {
+    background: #FCB900;
+    border-color: #FCB900;
+}
+
+.ptp-camp-admin .ptp-stat-card .stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1d2327;
+}
+
+.ptp-camp-admin .ptp-stat-card .stat-label {
+    display: block;
+    font-size: 14px;
+    color: #50575e;
+    margin-top: 5px;
+}
+
+.ptp-camp-admin .ptp-stat-card .stat-sub {
+    display: block;
+    font-size: 12px;
+    color: #8c8f94;
+    margin-top: 3px;
+}
+
+.ptp-camp-admin .ptp-filters {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.ptp-camp-admin .ptp-filters form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ptp-camp-admin .ptp-filters select,
+.ptp-camp-admin .ptp-filters input[type="text"] {
+    padding: 6px 10px;
+}
+
+.ptp-camp-admin .status-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.ptp-camp-admin .status-pending { background: #fef3c7; color: #92400e; }
+.ptp-camp-admin .status-processing { background: #dbeafe; color: #1e40af; }
+.ptp-camp-admin .status-completed { background: #d1fae5; color: #065f46; }
+.ptp-camp-admin .status-cancelled { background: #f3f4f6; color: #374151; }
+.ptp-camp-admin .status-refunded { background: #fee2e2; color: #991b1b; }
+
+.ptp-camp-admin .camper-count {
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* Modal */
+.ptp-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ptp-modal-content {
+    background: #fff;
+    border-radius: 8px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: auto;
+}
+
+.ptp-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    background: #fff;
+}
+
+.ptp-modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.ptp-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    line-height: 1;
+}
+
+.ptp-modal-close:hover {
+    color: #000;
+}
+
+.ptp-modal-body {
+    padding: 20px;
+}
+
+/* Order detail view */
+.ptp-modal .order-detail h3 {
+    margin: 20px 0 10px;
+    font-size: 16px;
+    color: #1d2327;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.ptp-modal .order-detail h4 {
+    margin: 0 0 10px;
+    color: #1d2327;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .ptp-camp-admin .ptp-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .ptp-camp-admin .ptp-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ptp-camp-admin .ptp-filters form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .ptp-modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}

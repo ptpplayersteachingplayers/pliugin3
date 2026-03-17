@@ -1,0 +1,703 @@
+/**
+ * PTP MasterClass Design System v2.0
+ * 
+ * Premium cinematic styling inspired by MasterClass
+ * Supports both dark (black) and light (white) themes
+ * 
+ * Usage: Add class "mc-dark" or "mc-light" to body or container
+ * Default: mc-light (white background)
+ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES - SHARED
+   ============================================ */
+:root {
+  /* Brand colors */
+  --mc-gold: #FCB900;
+  --mc-gold-hover: #e5a800;
+  --mc-gold-dim: rgba(252,185,0,0.1);
+  --mc-gold-glow: rgba(252,185,0,0.3);
+  --mc-green: #22c55e;
+  --mc-red: #ef4444;
+  
+  /* Typography */
+  --mc-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --mc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mc-font-display: 'Oswald', -apple-system, sans-serif;
+  
+  /* Spacing */
+  --mc-space-xs: 4px;
+  --mc-space-sm: 8px;
+  --mc-space-md: 16px;
+  --mc-space-lg: 24px;
+  --mc-space-xl: 40px;
+  --mc-space-2xl: 60px;
+  --mc-space-3xl: 80px;
+  
+  /* Transitions */
+  --mc-transition: 0.3s ease;
+  --mc-transition-fast: 0.15s ease;
+  
+  /* Safe areas */
+  --mc-safe-top: env(safe-area-inset-top, 0px);
+  --mc-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ============================================
+   LIGHT THEME (Default - White Background)
+   ============================================ */
+.mc-light,
+[data-mc-theme="light"],
+.mc-page {
+  --mc-black: #0a0a0a;
+  --mc-dark: #111111;
+  --mc-dark-2: #1a1a1a;
+  --mc-dark-3: #222222;
+  --mc-white: #ffffff;
+  --mc-gray: #666666;
+  --mc-light-gray: #999999;
+  
+  --mc-bg: #ffffff;
+  --mc-bg-alt: #f8f8f8;
+  --mc-bg-card: #ffffff;
+  --mc-bg-elevated: #fafafa;
+  --mc-text: #1a1a1a;
+  --mc-text-secondary: #666666;
+  --mc-text-muted: #999999;
+  --mc-border: #e5e5e5;
+  --mc-border-light: #f0f0f0;
+  --mc-overlay: rgba(255,255,255,0.9);
+  --mc-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  --mc-shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* ============================================
+   DARK THEME (Black Background)
+   ============================================ */
+.mc-dark,
+[data-mc-theme="dark"] {
+  --mc-black: #0a0a0a;
+  --mc-dark: #111111;
+  --mc-dark-2: #1a1a1a;
+  --mc-dark-3: #222222;
+  --mc-white: #ffffff;
+  --mc-gray: #a3a3a3;
+  --mc-light-gray: #737373;
+  
+  --mc-bg: #0a0a0a;
+  --mc-bg-alt: #111111;
+  --mc-bg-card: #1a1a1a;
+  --mc-bg-elevated: #222222;
+  --mc-text: #ffffff;
+  --mc-text-secondary: #a3a3a3;
+  --mc-text-muted: #737373;
+  --mc-border: #333333;
+  --mc-border-light: #404040;
+  --mc-overlay: rgba(0,0,0,0.7);
+  --mc-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  --mc-shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+.mc-page {
+  font-family: var(--mc-font-sans);
+  background: var(--mc-bg);
+  color: var(--mc-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mc-page * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Serif Headlines - Premium feel */
+.mc-headline,
+.mc-h1,
+.mc-h2,
+.mc-h3 {
+  font-family: var(--mc-font-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--mc-text);
+}
+
+.mc-h1 {
+  font-size: clamp(32px, 8vw, 60px);
+}
+
+.mc-h2 {
+  font-size: clamp(26px, 5vw, 40px);
+}
+
+.mc-h3 {
+  font-size: clamp(20px, 4vw, 28px);
+}
+
+/* Italic gold accent for emphasis */
+.mc-headline em,
+.mc-h1 em,
+.mc-h2 em,
+.mc-h3 em {
+  font-style: italic;
+  color: var(--mc-gold);
+}
+
+/* Display text - Oswald for labels/badges */
+.mc-display {
+  font-family: var(--mc-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Section label - small caps above headlines */
+.mc-label {
+  display: inline-block;
+  font-family: var(--mc-font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mc-gold);
+  margin-bottom: 12px;
+}
+
+/* Body text */
+.mc-body {
+  font-size: 15px;
+  color: var(--mc-text-secondary);
+  line-height: 1.7;
+}
+
+.mc-body-sm {
+  font-size: 13px;
+  color: var(--mc-text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================
+   BADGES & TAGS
+   ============================================ */
+.mc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--mc-gold);
+  color: #0a0a0a;
+  font-family: var(--mc-font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+}
+
+.mc-badge svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+.mc-badge-outline {
+  background: transparent;
+  border: 1px solid var(--mc-gold);
+  color: var(--mc-gold);
+}
+
+.mc-tag {
+  display: inline-block;
+  background: var(--mc-bg-alt);
+  border: 1px solid var(--mc-border);
+  color: var(--mc-text);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 100px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.mc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--mc-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 32px;
+  border: none;
+  cursor: pointer;
+  transition: var(--mc-transition);
+}
+
+.mc-btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary - Gold */
+.mc-btn-primary {
+  background: var(--mc-gold);
+  color: #0a0a0a;
+}
+
+.mc-btn-primary:hover {
+  background: var(--mc-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--mc-gold-glow);
+}
+
+/* Secondary - Outline */
+.mc-btn-secondary {
+  background: transparent;
+  border: 2px solid var(--mc-border);
+  color: var(--mc-text);
+}
+
+.mc-btn-secondary:hover {
+  border-color: var(--mc-gold);
+  color: var(--mc-gold);
+}
+
+/* Ghost - Minimal */
+.mc-btn-ghost {
+  background: transparent;
+  color: var(--mc-text-secondary);
+  padding: 12px 20px;
+}
+
+.mc-btn-ghost:hover {
+  color: var(--mc-gold);
+}
+
+/* Full width */
+.mc-btn-block {
+  width: 100%;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.mc-card {
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  padding: var(--mc-space-lg);
+  border-radius: 8px;
+  transition: var(--mc-transition);
+}
+
+.mc-card:hover {
+  border-color: var(--mc-gold);
+  box-shadow: var(--mc-shadow-sm);
+}
+
+.mc-card-elevated {
+  box-shadow: var(--mc-shadow);
+}
+
+.mc-card-title {
+  font-family: var(--mc-font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--mc-text);
+  margin-bottom: 8px;
+}
+
+.mc-card-title em {
+  font-style: italic;
+  color: var(--mc-gold);
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.mc-stats {
+  display: flex;
+  gap: var(--mc-space-xl);
+  flex-wrap: wrap;
+}
+
+.mc-stat {
+  text-align: center;
+}
+
+.mc-stat-value {
+  font-family: var(--mc-font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--mc-text);
+  line-height: 1;
+}
+
+.mc-stat-value.gold {
+  color: var(--mc-gold);
+}
+
+.mc-stat-label {
+  font-size: 10px;
+  color: var(--mc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+/* ============================================
+   SECTION LAYOUTS
+   ============================================ */
+.mc-section {
+  padding: var(--mc-space-3xl) var(--mc-space-lg);
+}
+
+@media (max-width: 768px) {
+  .mc-section {
+    padding: var(--mc-space-2xl) var(--mc-space-md);
+  }
+}
+
+.mc-section-alt {
+  background: var(--mc-bg-alt);
+}
+
+.mc-section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--mc-space-xl);
+}
+
+.mc-section-headline {
+  font-family: var(--mc-font-serif);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--mc-text);
+}
+
+.mc-section-headline em {
+  font-style: italic;
+  color: var(--mc-gold);
+}
+
+.mc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--mc-space-lg);
+}
+
+@media (max-width: 768px) {
+  .mc-container {
+    padding: 0 var(--mc-space-md);
+  }
+}
+
+/* ============================================
+   HERO PATTERNS
+   ============================================ */
+.mc-hero {
+  position: relative;
+  min-height: 90vh;
+  min-height: 90dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--mc-bg);
+}
+
+.mc-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Light theme hero overlay */
+.mc-light .mc-hero-overlay,
+[data-mc-theme="light"] .mc-hero-overlay,
+.mc-page:not(.mc-dark) .mc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.97) 0%,
+    rgba(255,255,255,0.85) 40%,
+    rgba(255,255,255,0.5) 70%,
+    rgba(255,255,255,0.2) 100%
+  );
+}
+
+/* Dark theme hero overlay */
+.mc-dark .mc-hero-overlay,
+[data-mc-theme="dark"] .mc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10,10,10,0.5) 0%,
+    rgba(10,10,10,0.3) 40%,
+    rgba(10,10,10,0.7) 70%,
+    rgba(10,10,10,0.95) 100%
+  );
+}
+
+@media (max-width: 1024px) {
+  .mc-light .mc-hero-overlay,
+  [data-mc-theme="light"] .mc-hero-overlay,
+  .mc-page:not(.mc-dark) .mc-hero-overlay {
+    background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,1) 70%);
+  }
+}
+
+.mc-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 60px;
+}
+
+@media (max-width: 768px) {
+  .mc-hero {
+    min-height: auto;
+  }
+  
+  .mc-hero-content {
+    padding: var(--mc-space-2xl) var(--mc-space-md);
+  }
+}
+
+/* ============================================
+   SOCIAL PROOF BAR
+   ============================================ */
+.mc-social-proof {
+  background: var(--mc-bg-alt);
+  border-top: 1px solid var(--mc-border);
+  border-bottom: 1px solid var(--mc-border);
+  padding: 24px;
+}
+
+.mc-proof-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .mc-proof-inner { gap: 20px; }
+}
+
+.mc-proof-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mc-proof-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--mc-gold-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc-proof-icon svg { width: 18px; height: 18px; fill: var(--mc-gold); }
+
+.mc-proof-text strong {
+  display: block;
+  font-family: var(--mc-font-display);
+  font-size: 16px;
+  color: var(--mc-text);
+}
+
+.mc-proof-text span {
+  font-size: 10px;
+  color: var(--mc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   REVIEWS/TESTIMONIALS
+   ============================================ */
+.mc-review {
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  padding: var(--mc-space-lg);
+  border-radius: 8px;
+}
+
+.mc-review-stars {
+  color: var(--mc-gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.mc-review-text {
+  font-size: 14px;
+  color: var(--mc-text-secondary);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.mc-review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mc-review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--mc-gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mc-font-display);
+  font-weight: 700;
+  color: var(--mc-gold);
+  font-size: 14px;
+}
+
+.mc-review-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--mc-text);
+}
+
+.mc-review-role {
+  font-size: 12px;
+  color: var(--mc-text-muted);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.mc-input {
+  width: 100%;
+  background: var(--mc-bg-card);
+  border: 1px solid var(--mc-border);
+  color: var(--mc-text);
+  font-family: var(--mc-font-sans);
+  font-size: 14px;
+  padding: 14px 16px;
+  border-radius: 6px;
+  transition: var(--mc-transition);
+}
+
+.mc-input:focus {
+  outline: none;
+  border-color: var(--mc-gold);
+}
+
+.mc-input::placeholder {
+  color: var(--mc-text-muted);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes mc-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mc-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mc-animate-up {
+  animation: mc-fadeUp 0.6s ease-out both;
+}
+
+.mc-animate-in {
+  animation: mc-fadeIn 0.4s ease-out both;
+}
+
+/* Staggered delays */
+.mc-delay-1 { animation-delay: 0.1s; }
+.mc-delay-2 { animation-delay: 0.2s; }
+.mc-delay-3 { animation-delay: 0.3s; }
+.mc-delay-4 { animation-delay: 0.4s; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON — HIDDEN
+   ============================================ */
+.mc-theme-toggle {
+  display: none !important;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.mc-text-center { text-align: center; }
+.mc-text-left { text-align: left; }
+.mc-text-gold { color: var(--mc-gold); }
+.mc-text-muted { color: var(--mc-text-muted); }
+
+.mc-mt-sm { margin-top: var(--mc-space-sm); }
+.mc-mt-md { margin-top: var(--mc-space-md); }
+.mc-mt-lg { margin-top: var(--mc-space-lg); }
+.mc-mt-xl { margin-top: var(--mc-space-xl); }
+
+.mc-mb-sm { margin-bottom: var(--mc-space-sm); }
+.mc-mb-md { margin-bottom: var(--mc-space-md); }
+.mc-mb-lg { margin-bottom: var(--mc-space-lg); }
+.mc-mb-xl { margin-bottom: var(--mc-space-xl); }
+
+.mc-flex { display: flex; }
+.mc-flex-center { align-items: center; justify-content: center; }
+.mc-gap-sm { gap: var(--mc-space-sm); }
+.mc-gap-md { gap: var(--mc-space-md); }
+.mc-gap-lg { gap: var(--mc-space-lg); }
+
+/* Visibility helpers */
+.mc-desktop-only { display: block; }
+.mc-mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .mc-desktop-only { display: none !important; }
+  .mc-mobile-only { display: block !important; }
+}

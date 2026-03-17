@@ -1,0 +1,656 @@
+/**
+ * PTP Instant Pay Styles
+ * Trainer earnings dashboard and payouts
+ * Mobile-first design
+ * @version 1.0.0
+ */
+
+:root {
+    --ptp-gold: #FCB900;
+    --ptp-black: #0A0A0A;
+    --ptp-success: #10B981;
+    --ptp-warning: #F59E0B;
+    --ptp-error: #EF4444;
+    --ptp-stripe: #635BFF;
+}
+
+/* ==========================================================================
+   Earnings Dashboard
+   ========================================================================== */
+.ptp-earnings-dashboard {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Header Card */
+.ptp-earnings-header {
+    background: linear-gradient(135deg, var(--ptp-black) 0%, #1a1a1a 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.ptp-earnings-header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ptp-earnings-header__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.ptp-earnings-header__subtitle {
+    color: #9CA3AF;
+    margin: 4px 0 0;
+    font-size: 14px;
+}
+
+/* Stats Grid */
+.ptp-earnings-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.ptp-earnings-stat {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+
+.ptp-earnings-stat__value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ptp-earnings-stat--available .ptp-earnings-stat__value {
+    color: var(--ptp-success);
+}
+
+.ptp-earnings-stat--pending .ptp-earnings-stat__value {
+    color: var(--ptp-gold);
+}
+
+.ptp-earnings-stat__label {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Instant Payout Button
+   ========================================================================== */
+.ptp-instant-payout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ptp-success);
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.ptp-instant-payout-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.ptp-instant-payout-btn:active {
+    transform: translateY(0);
+}
+
+.ptp-instant-payout-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.ptp-instant-payout-btn__icon {
+    font-size: 18px;
+}
+
+/* ==========================================================================
+   Stripe Connect Banner
+   ========================================================================== */
+.ptp-stripe-banner {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+    border: 2px solid var(--ptp-gold);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.ptp-stripe-banner__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+
+.ptp-stripe-banner__desc {
+    color: #666;
+    margin: 0 0 16px;
+    font-size: 14px;
+}
+
+.ptp-stripe-banner__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ptp-black);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-stripe-banner__btn:hover {
+    background: var(--ptp-stripe);
+}
+
+/* ==========================================================================
+   Cards Layout
+   ========================================================================== */
+.ptp-earnings-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.ptp-earnings-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ptp-earnings-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.ptp-earnings-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   Earnings Chart
+   ========================================================================== */
+.ptp-earnings-chart {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding-top: 20px;
+}
+
+.ptp-earnings-chart__bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ptp-earnings-chart__fill {
+    background: var(--ptp-gold);
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    min-height: 4px;
+    transition: height 0.3s ease;
+}
+
+.ptp-earnings-chart__label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.ptp-earnings-chart__value {
+    font-size: 10px;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   Payout History
+   ========================================================================== */
+.ptp-payout-history {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ptp-payout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.ptp-payout-item__amount {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.ptp-payout-item__date {
+    font-size: 12px;
+    color: #666;
+    margin-left: 8px;
+}
+
+.ptp-payout-item__status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.ptp-payout-item__status--completed {
+    background: #D1FAE5;
+    color: #059669;
+}
+
+.ptp-payout-item__status--processing {
+    background: #FEF3C7;
+    color: #D97706;
+}
+
+.ptp-payout-item__status--failed {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.ptp-payout-history--empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+/* ==========================================================================
+   Payout Settings
+   ========================================================================== */
+.ptp-payout-settings {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.ptp-payout-settings__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    margin: 0 0 16px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ptp-payout-settings__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.ptp-payout-settings__option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.ptp-payout-settings__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--ptp-gold);
+}
+
+.ptp-payout-settings__label strong {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.ptp-payout-settings__label small {
+    color: #666;
+    font-size: 13px;
+}
+
+.ptp-payout-settings__input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ptp-payout-settings__input input {
+    width: 100px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.ptp-payout-settings__input input:focus {
+    outline: none;
+    border-color: var(--ptp-gold);
+}
+
+/* Stripe Connected Status */
+.ptp-stripe-status {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ptp-stripe-status__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ptp-stripe-status__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--ptp-success);
+}
+
+.ptp-stripe-status__label {
+    font-weight: 600;
+}
+
+.ptp-stripe-status__id {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.ptp-stripe-dashboard-btn {
+    background: var(--ptp-stripe);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-stripe-dashboard-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Floating Earnings Widget
+   ========================================================================== */
+.ptp-earnings-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--ptp-black);
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.ptp-earnings-widget:hover {
+    transform: translateY(-4px);
+}
+
+.ptp-earnings-widget__icon {
+    background: var(--ptp-success);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.ptp-earnings-widget__label {
+    font-size: 12px;
+    color: #9CA3AF;
+}
+
+.ptp-earnings-widget__amount {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.ptp-earnings-widget__btn {
+    background: var(--ptp-success);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ptp-earnings-widget__btn:hover {
+    background: #059669;
+}
+
+/* ==========================================================================
+   Period Selector
+   ========================================================================== */
+.ptp-period-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.ptp-period-select:focus {
+    outline: none;
+    border-color: var(--ptp-gold);
+}
+
+/* ==========================================================================
+   Compact Earnings Card
+   ========================================================================== */
+.ptp-earnings-mini {
+    background: var(--ptp-black);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ptp-earnings-mini__label {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-bottom: 4px;
+}
+
+.ptp-earnings-mini__amount {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ptp-success);
+}
+
+.ptp-earnings-mini__btn {
+    background: var(--ptp-success);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.ptp-earnings-mini__btn:hover {
+    background: #059669;
+}
+
+/* ==========================================================================
+   Mobile Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ptp-earnings-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .ptp-earnings-header__top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .ptp-instant-payout-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .ptp-earnings-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ptp-payout-settings__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ptp-stripe-status {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .ptp-earnings-widget {
+        left: 10px;
+        right: 10px;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .ptp-earnings-header {
+        padding: 20px 16px;
+    }
+    
+    .ptp-earnings-header__title {
+        font-size: 22px;
+    }
+    
+    .ptp-earnings-stat__value {
+        font-size: 22px;
+    }
+    
+    .ptp-payout-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .ptp-payout-item__status {
+        align-self: flex-end;
+    }
+    
+    .ptp-earnings-chart {
+        height: 150px;
+    }
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes pulseGreen {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+}
+
+.ptp-instant-payout-btn--pulse {
+    animation: pulseGreen 2s infinite;
+}
+
+/* ==========================================================================
+   Loading States
+   ========================================================================== */
+.ptp-earnings-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.ptp-earnings-loading__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #E5E7EB;
+    border-top-color: var(--ptp-gold);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Print */
+@media print {
+    .ptp-earnings-widget,
+    .ptp-instant-payout-btn,
+    .ptp-stripe-dashboard-btn {
+        display: none !important;
+    }
+}

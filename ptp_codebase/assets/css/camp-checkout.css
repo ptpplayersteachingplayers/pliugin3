@@ -1,0 +1,69 @@
+/**
+ * PTP Camp Checkout Styles
+ * @version 146.0.0
+ */
+
+/* Variables are defined inline in camp-checkout.php template */
+
+/* Additional utility classes */
+.ptp-camp-checkout .hidden {
+    display: none !important;
+}
+
+.ptp-camp-checkout .loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Sibling discount badge */
+.sibling-badge {
+    display: inline-block;
+    background: #d1fae5;
+    color: #065f46;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Form validation */
+.ptp-camp-checkout input:invalid:not(:placeholder-shown),
+.ptp-camp-checkout select:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+.ptp-camp-checkout .error-message {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ptp-camp-checkout .checkout-step {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Touch optimizations */
+@media (pointer: coarse) {
+    .ptp-camp-checkout button,
+    .ptp-camp-checkout .btn-select-camp,
+    .ptp-camp-checkout input,
+    .ptp-camp-checkout select {
+        min-height: 44px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .ptp-camp-checkout .checkout-progress,
+    .ptp-camp-checkout .btn-continue,
+    .ptp-camp-checkout .btn-back,
+    .ptp-camp-checkout .btn-pay {
+        display: none !important;
+    }
+}

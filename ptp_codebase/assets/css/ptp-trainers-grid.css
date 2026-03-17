@@ -1,0 +1,461 @@
+/* =============================================
+   WORDPRESS GAP OVERRIDES (required)
+   ============================================= */
+html,body{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0}
+@media(min-width:1024px){html,body{overflow-y:scroll !important;overflow-x:hidden !important;height:auto !important;min-height:100% !important;position:static !important}}
+html.menu-open,html.modal-open,html.ptp-drawer-open,html.no-scroll,
+body.menu-open,body.modal-open,body.ptp-drawer-open,body.no-scroll{overflow:visible !important;position:static !important;height:auto !important}
+/* Hide PTP custom header/nav on this page (has its own search bar) */
+.ptp-header,header.ptp-header,#ptpHeader,.ptp-bottom-nav,.ptp-mobile-nav,.ptp-mobile-nav-overlay{display:none !important}
+body.has-ptp-header{padding-top:0 !important}
+body:has(.ptp-header){padding-top:0 !important}
+*{box-sizing:border-box}
+/* Reset spacing on WP content wrappers — scoped to avoid touching theme header/footer */
+#page,#content,#primary,.site,.site-content,.content-area,
+main,main.site-main,article,.hentry,.entry-content,.post-content,
+.page-content,.ast-container,.ast-row,.container,.site-main,#main,
+.wp-block-post-content,.is-layout-constrained,.is-layout-flow,
+.elementor-widget-container,.ast-article-single,.ast-article-post,
+.ast-separate-container,.ast-plain-container,.ast-page-builder-template{
+    margin:0 !important;padding:0 !important;border:none !important;background:transparent !important;
+    overflow:visible !important;
+}
+/* DO NOT use 'all:revert!important' — it nukes WP theme header/footer styling */
+.is-layout-constrained > * + *,.is-layout-flow > * + *{margin-block-start:0 !important}
+
+/* =============================================
+   AIRBNB-STYLE LAYOUT — MOBILE-FIRST
+   ============================================= */
+.ft{
+    --gold:#FCB900;--gold-light:rgba(252,185,0,0.08);--gold-hover:#e5a800;
+    --black:#0A0A0A;--bg:#fff;--card-bg:#fff;
+    --border:#EBEBEB;--border-hover:var(--gold);
+    --text:#222;--text-sub:#717171;--text-light:#B0B0B0;
+    --r:12px;--r-lg:16px;
+    --shadow-card:0 1px 2px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.04);
+    --shadow-card-hover:0 6px 20px rgba(0,0,0,0.1);
+    /* Safe area insets for notched phones */
+    --safe-t:env(safe-area-inset-top,0px);
+    --safe-b:env(safe-area-inset-bottom,0px);
+    --safe-l:env(safe-area-inset-left,0px);
+    --safe-r:env(safe-area-inset-right,0px);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--bg);min-height:100vh;min-height:100dvh;
+    display:flex;flex-direction:column;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-text-size-adjust:100%;
+    margin-top:0 !important;padding-top:0 !important;
+}
+.ft h1,.ft h2,.ft h3{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;margin:0}
+
+/* iOS input fixes */
+.ft input,.ft select,.ft button,.ft textarea{
+    -webkit-appearance:none;-moz-appearance:none;appearance:none;
+    border-radius:0;font-family:inherit;
+}
+.ft input[type="text"],.ft input[type="email"],.ft select{
+    font-size:16px; /* Prevents iOS zoom on focus */
+}
+
+/* =============================================
+   STICKY SEARCH BAR
+   ============================================= */
+.ft-top{
+    border-bottom:1px solid var(--border);
+    padding:12px calc(16px + var(--safe-l)) 12px calc(16px + var(--safe-r));
+    background:#fff;
+    position:sticky;top:0;z-index:50;
+}
+
+.ft-top-inner{
+    max-width:1800px;margin:0 auto;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+
+/* Search — full-width on mobile, flex on desktop */
+.ft-search{
+    display:flex;align-items:center;
+    background:#F7F7F7;border:1px solid var(--border);border-radius:40px;
+    overflow:hidden;flex:1;min-width:0;
+    transition:border-color 0.2s,box-shadow 0.2s;
+}
+.ft-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 2px rgba(252,185,0,0.2)}
+
+.ft-locate{
+    background:none;border:none;padding:12px 14px;cursor:pointer;color:var(--text-sub);
+    display:flex;align-items:center;justify-content:center;
+    min-width:48px;min-height:48px; /* 48px touch target */
+    transition:color 0.2s;flex-shrink:0;
+}
+.ft-locate:active{color:var(--gold);transform:scale(0.92)}
+.ft-locate.loading{animation:ftPulse 1s infinite}
+.ft-locate svg{width:20px;height:20px}
+@keyframes ftPulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.ft-search input{
+    flex:1;border:none;background:none;
+    padding:14px 4px 14px 0;
+    font-size:16px; /* 16px prevents iOS zoom */
+    color:var(--text);min-width:0;min-height:48px;
+    autocomplete:off;
+}
+.ft-search input::placeholder{color:var(--text-light)}
+.ft-search input:focus{outline:none}
+
+.ft-search-btn{
+    background:var(--gold);border:none;padding:0;margin:6px;
+    width:40px;height:40px;border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    transition:background 0.15s,transform 0.1s;
+}
+.ft-search-btn:active{transform:scale(0.88);background:var(--gold-hover)}
+.ft-search-btn svg{width:16px;height:16px;stroke:var(--black);stroke-width:2.5}
+
+/* Filter pills — horizontal scroll on mobile */
+.ft-filters{
+    display:flex;gap:8px;align-items:center;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;flex-shrink:0;
+    padding:2px 0; /* Prevents cut-off on active scale */
+}
+.ft-filters::-webkit-scrollbar{display:none}
+
+.ft-pill{
+    padding:10px 16px;border:1px solid var(--border);border-radius:30px;
+    background:#fff;color:var(--text);font-size:13px;font-weight:500;
+    cursor:pointer;white-space:nowrap;transition:all 0.15s;
+    min-height:44px; /* 44px touch target (Apple minimum) */
+    display:inline-flex;align-items:center;
+}
+.ft-pill:active{transform:scale(0.93)}
+.ft-pill.on{background:var(--black);border-color:var(--black);color:#fff}
+
+/* Sort */
+.ft-sort select{
+    padding:10px 14px;border:1px solid var(--border);border-radius:30px;
+    font-size:14px;background:#fff;color:var(--text);
+    min-height:44px;cursor:pointer;
+}
+
+/* On very small screens: search takes full row, pills + sort wrap below */
+@media(max-width:519px){
+    .ft-top-inner{gap:8px}
+    .ft-search{order:0;flex:1 1 100%;max-width:none}
+    .ft-filters{order:1;flex:1 1 auto}
+    .ft-sort{order:2;flex-shrink:0}
+}
+@media(min-width:520px){
+    .ft-search{max-width:380px}
+}
+@media(min-width:768px){
+    .ft-search{max-width:420px}
+    .ft-top{padding:14px 24px}
+}
+@media(min-width:1024px){
+    .ft-top{padding:16px 32px}
+    .ft-search{max-width:480px}
+}
+
+/* =============================================
+   COUNT BAR
+   ============================================= */
+.ft-bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px calc(16px + var(--safe-l)) 10px calc(16px + var(--safe-r));
+    border-bottom:1px solid var(--border);
+    flex-wrap:wrap;gap:8px;
+}
+.ft-count{font-size:13px;color:var(--text-sub)}
+.ft-count b{color:var(--text);font-weight:600}
+
+.ft-loc-notice{
+    background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:20px;
+    padding:6px 12px;color:var(--text);font-size:12px;display:inline-flex;align-items:center;gap:5px;
+}
+.ft-loc-notice svg{width:14px;height:14px;stroke:#22C55E}
+
+@media(min-width:768px){.ft-bar{padding:12px 24px}}
+
+/* =============================================
+   SPLIT LAYOUT — cards left, map right
+   ============================================= */
+.ft-main{display:flex;flex:1;min-height:auto;position:relative}
+
+.ft-list{
+    flex:1;
+    padding:0 calc(16px + var(--safe-l)) calc(140px + var(--safe-b)) calc(16px + var(--safe-r));
+    /* 140px bottom = room for map toggle (48px) + FAB (52px) + gaps */
+    overflow:visible;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* Grid — mobile-first: always 2 columns for compact cards */
+.ft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-top:12px}
+@media(min-width:420px){.ft-grid{gap:14px}}
+@media(min-width:520px){.ft-grid{gap:20px}}
+
+/* =============================================
+   TRAINER CARDS — Airbnb-style
+   ============================================= */
+.ft-card{
+    display:block;text-decoration:none;color:inherit;
+    border-radius:var(--r-lg);overflow:visible;
+    transition:transform 0.15s;
+    position:relative;
+    /* Entire card is tap target — comfortably above 48px */
+}
+.ft-card:active{transform:scale(0.97)}
+
+/* Card Image */
+.ft-card-img{
+    aspect-ratio:1; /* Square cards for compact mobile grid */
+    border-radius:var(--r-lg);overflow:hidden;
+    position:relative;background:#F0F0F0;
+}
+.ft-card-img img{
+    width:100%;height:100%;object-fit:cover;object-position:center top;
+    transition:transform 0.4s ease;
+}
+
+/* Level tag */
+.ft-card-tag{
+    position:absolute;top:8px;left:8px;
+    padding:4px 8px;background:#fff;color:var(--text);
+    font-size:10px;font-weight:600;border-radius:5px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.12);
+    font-family:'Oswald',sans-serif;letter-spacing:0.03em;text-transform:uppercase;
+}
+
+/* Badges */
+.ft-card-badges{position:absolute;top:8px;right:8px;display:flex;gap:4px}
+.ft-badge{
+    width:26px;height:26px;background:#fff;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 4px rgba(0,0,0,0.12);
+}
+.ft-badge svg{width:11px;height:11px}
+.ft-badge.v svg{stroke:#22C55E}
+.ft-badge.f svg{fill:var(--gold);stroke:var(--gold)}
+.ft-badge.m{background:var(--gold);border:none}
+.ft-badge.m svg{stroke:#0A0A0A;fill:none}
+.ft-pill-mentor{border-color:var(--gold) !important;color:var(--gold) !important}
+.ft-pill-mentor.on{background:var(--gold) !important;border-color:var(--gold) !important;color:#0A0A0A !important}
+.ft-card-mentor{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;color:var(--gold);margin-top:2px}
+.ft-card-mentor svg{width:10px;height:10px;stroke:var(--gold);fill:none}
+
+/* Supercoach */
+.ft-supercoach .ft-card-img{border:2px solid var(--gold)}
+.ft-supercoach-ribbon{
+    position:absolute;top:0;left:0;right:0;
+    background:var(--gold);color:var(--black);
+    font-family:'Oswald',sans-serif;font-size:9px;font-weight:700;
+    text-align:center;padding:4px 8px;letter-spacing:0.12em;text-transform:uppercase;
+    z-index:10;border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.ft-supercoach .ft-card-tag{top:32px}
+.ft-supercoach .ft-card-badges{top:32px}
+
+/* Card Body */
+.ft-card-body{padding:6px 2px 0}
+.ft-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:2px}
+.ft-card-name{
+    font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:0.02em;color:var(--text);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.ft-card-rating{
+    display:flex;align-items:center;gap:3px;font-size:12px;font-weight:500;color:var(--text);
+    flex-shrink:0;
+}
+.ft-card-rating svg{width:11px;height:11px;fill:var(--text);stroke:none}
+.ft-card-rating span{color:var(--text-sub);font-weight:400;font-size:11px}
+.ft-card-loc{font-size:12px;color:var(--text-sub);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ft-card-cred{font-size:11px;color:var(--text-light);margin-bottom:4px}
+.ft-card-price{font-size:13px;color:var(--text)}
+.ft-card-price b{font-weight:600}
+.ft-card-price span{color:var(--text-sub);font-weight:400}
+
+/* Larger phones: scale up slightly */
+@media(min-width:420px){
+    .ft-card-name{font-size:14px}
+    .ft-card-loc{font-size:12px;margin-bottom:2px}
+    .ft-card-rating{font-size:13px}
+    .ft-card-rating svg{width:12px;height:12px}
+    .ft-card-price{font-size:14px}
+    .ft-card-body{padding:8px 2px 0}
+    .ft-card-tag{padding:5px 10px;font-size:11px;top:10px;left:10px}
+    .ft-card-badges{top:10px;right:10px;gap:5px}
+    .ft-badge{width:30px;height:30px}
+    .ft-badge svg{width:13px;height:13px}
+    .ft-supercoach-ribbon{font-size:10px;padding:5px 10px}
+    .ft-supercoach .ft-card-tag{top:38px}
+    .ft-supercoach .ft-card-badges{top:38px}
+    .ft-card-cred{font-size:12px}
+}
+@media(min-width:768px){
+    .ft-card-name{font-size:15px}
+    .ft-card-loc{font-size:13px}
+}
+
+/* Skeleton */
+@keyframes ftShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.ft-skel{background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:ftShimmer 1.5s infinite;border-radius:var(--r)}
+.ft-skel-card{border-radius:var(--r-lg);overflow:hidden}
+.ft-skel-img{aspect-ratio:1;border-radius:var(--r-lg)}
+.ft-skel-body{padding:10px 2px}
+.ft-skel-line{height:14px;margin-bottom:8px;border-radius:4px}
+.ft-skel-line.short{width:60%}
+.ft-skel-line.med{width:80%}
+
+/* Empty state */
+.ft-empty{text-align:center;padding:60px 20px;grid-column:1/-1}
+.ft-empty h3{font-size:18px;margin-bottom:8px;color:var(--text)}
+.ft-empty p{color:var(--text-sub);font-size:14px}
+
+/* =============================================
+   MAP
+   ============================================= */
+.ft-map-wrap{display:none}
+#map{width:100%;height:100%}
+
+/* Mobile map overlay */
+@media(max-width:1023px){
+    .ft-map-wrap.on{display:block;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200}
+    #map{min-height:100vh;min-height:100dvh}
+    .ft-map-close{
+        position:absolute;top:calc(16px + var(--safe-t));right:16px;z-index:201;
+        background:#fff;border:none;width:44px;height:44px;border-radius:50%;
+        box-shadow:0 2px 12px rgba(0,0,0,.15);cursor:pointer;font-size:18px;
+        display:none;align-items:center;justify-content:center;color:var(--text);
+    }
+    .ft-map-close:active{transform:scale(0.9);background:#f0f0f0}
+    .ft-map-wrap.on .ft-map-close{display:flex}
+}
+
+/* Desktop: side-by-side — list scrolls independently, map stays fixed */
+@media(min-width:1024px){
+    .ft{min-height:100vh;display:block !important;overflow:visible !important}
+    .ft-top{position:sticky;top:0;z-index:50}
+    .ft-main{display:flex !important;flex-direction:row;max-width:1800px;margin:0 auto;height:calc(100vh - 73px);align-items:stretch;min-height:0}
+    .ft-list{width:55%;padding:0 24px 40px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+    .ft-grid{grid-template-columns:repeat(2,1fr);gap:22px}
+    .ft-card-img{aspect-ratio:4/5}
+    .ft-card-name{font-size:16px}
+    .ft-card-loc{font-size:13px}
+    .ft-map-wrap{display:block !important;width:45%;height:100%;border-left:1px solid var(--border)}
+    #map{min-height:100%;height:100%}
+    .ft-map-toggle{display:none}
+    .ft-map-close{display:none !important}
+}
+/* Mobile: ensure page-level scrolling, no trapped scroll */
+@media(max-width:1023px){
+    .ft{display:flex !important;flex-direction:column;overflow:visible !important;height:auto !important;min-height:100vh;min-height:100dvh}
+    .ft-main{display:block !important;flex:none;min-height:auto;overflow:visible !important}
+    .ft-list{overflow:visible !important;height:auto !important;min-height:auto}
+}
+@media(min-width:1280px){.ft-list{width:50%}.ft-map-wrap{width:50%}}
+@media(min-width:1536px){.ft-grid{grid-template-columns:repeat(3,1fr)}.ft-card-img{aspect-ratio:1}}
+
+/* Thin scrollbar for trainer list on desktop */
+@media(min-width:1024px){
+    .ft-list{scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+    .ft-list::-webkit-scrollbar{width:6px}
+    .ft-list::-webkit-scrollbar-track{background:transparent}
+    .ft-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+    .ft-list::-webkit-scrollbar-thumb:hover{background:#ccc}
+}
+
+/* Map toggle — fixed bottom on mobile */
+.ft-map-toggle{
+    position:fixed;
+    bottom:calc(20px + var(--safe-b));left:50%;transform:translateX(-50%);
+    z-index:100;background:var(--black);color:#fff;
+    padding:12px 24px;border-radius:24px;
+    font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;
+    border:none;box-shadow:0 4px 16px rgba(0,0,0,.25);
+    display:flex;align-items:center;gap:8px;cursor:pointer;
+    min-height:48px; /* Touch target */
+    transition:all 0.15s;
+}
+.ft-map-toggle:active{transform:translateX(-50%) scale(0.93)}
+.ft-map-toggle svg{width:16px;height:16px}
+
+/* =============================================
+   FLOATING MATCHER BUTTON + MODAL
+   ============================================= */
+/* =============================================
+   PROMO BANNER
+   ============================================= */
+.ft-promo{
+    display:flex;align-items:center;gap:14px;
+    background:linear-gradient(135deg,#FFFBEB 0%,#FFF 100%);
+    border:1px solid rgba(252,185,0,0.3);border-radius:var(--r-lg);
+    padding:14px 16px;margin:16px 0 0;flex-wrap:wrap;
+}
+.ft-promo-badge{
+    background:var(--gold);color:var(--black);font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.1em;padding:4px 12px;border-radius:20px;
+    white-space:nowrap;font-family:'Oswald',sans-serif;
+}
+.ft-promo-content{flex:1;min-width:160px}
+.ft-promo-title{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;color:var(--text);line-height:1.2}
+.ft-promo-title em{color:var(--gold);font-style:normal}
+.ft-promo-desc{font-size:12px;color:var(--text-sub);margin-top:1px}
+.ft-promo-btn{
+    background:var(--gold);color:var(--black);font-weight:700;font-size:13px;
+    text-decoration:none;padding:12px 20px;border-radius:8px;white-space:nowrap;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:0.03em;
+    transition:background 0.15s;min-height:44px;display:inline-flex;align-items:center;
+}
+.ft-promo-btn:active{background:var(--gold-hover);transform:scale(0.97)}
+@media(max-width:520px){
+    .ft-promo{flex-direction:column;text-align:center;gap:10px}
+    .ft-promo-btn{width:100%;justify-content:center}
+}
+
+/* =============================================
+   HOVER GUARD — only on real hover devices
+   ============================================= */
+@media(hover:hover){
+    .ft-locate:hover{color:var(--gold)}
+    .ft-search-btn:hover{background:var(--gold-hover)}
+    .ft-pill:hover{border-color:var(--black)}
+    .ft-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-card-hover)}
+    .ft-card:hover img{transform:scale(1.03)}
+    .ft-match-fab:hover{background:var(--gold-hover);box-shadow:0 6px 28px rgba(252,185,0,0.5)}
+    .ft-match-close:hover{background:rgba(255,255,255,0.2)}
+    .ft-promo-btn:hover{background:var(--gold-hover)}
+}
+
+/* Touch device — kill sticky hover */
+@media(hover:none)and(pointer:coarse){
+    .ft-card:hover{transform:none;box-shadow:none}
+    .ft-card:hover img{transform:none}
+}
+
+/* =============================================
+   ULTRA SMALL (< 380px)
+   ============================================= */
+@media(max-width:380px){
+    .ft-top{padding:10px calc(12px + var(--safe-l)) 10px calc(12px + var(--safe-r))}
+    .ft-top-inner{gap:6px}
+    .ft-pill{padding:8px 12px;font-size:12px;min-height:40px}
+    .ft-card-name{font-size:12px}
+    .ft-card-loc{font-size:11px}
+    .ft-card-price{font-size:12px}
+    .ft-card-cred{font-size:10px}
+    .ft-bar{padding:8px calc(12px + var(--safe-l))}
+    .ft-list{padding-left:calc(12px + var(--safe-l));padding-right:calc(12px + var(--safe-r))}
+    .ft-match-fab{padding:12px 16px;font-size:12px;right:calc(12px + var(--safe-r))}
+    .ft-match-fab span.ft-match-label{display:none} /* Icon only on tiny screens */
+    .ft-grid{gap:8px}
+    .ft-promo{padding:12px}
+    .ft-card-tag{padding:4px 8px;font-size:9px;top:6px;left:6px}
+    .ft-card-badges{top:6px;right:6px}
+    .ft-badge{width:24px;height:24px}
+    .ft-badge svg{width:10px;height:10px}
+    .ft-supercoach .ft-card-tag{top:32px}
+    .ft-supercoach .ft-card-badges{top:32px}
+    .ft-supercoach-ribbon{font-size:8px;padding:4px 8px}
+}

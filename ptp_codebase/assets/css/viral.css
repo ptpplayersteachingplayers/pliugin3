@@ -1,0 +1,656 @@
+/**
+ * PTP Viral Engine Styles
+ * Social sharing, referrals, and social proof
+ * Mobile-first design
+ * @version 1.0.0
+ */
+
+:root {
+    --ptp-gold: #FCB900;
+    --ptp-black: #0A0A0A;
+    --ptp-success: #10B981;
+    --ptp-facebook: #1877F2;
+    --ptp-twitter: #1DA1F2;
+    --ptp-whatsapp: #25D366;
+    --ptp-sms: #34C759;
+}
+
+/* ==========================================================================
+   Share Buttons
+   ========================================================================== */
+.ptp-share-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ptp-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.ptp-share-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.ptp-share-btn:active {
+    transform: translateY(0);
+}
+
+.ptp-share-btn--sms {
+    background: var(--ptp-sms);
+}
+
+.ptp-share-btn--whatsapp {
+    background: var(--ptp-whatsapp);
+}
+
+.ptp-share-btn--facebook {
+    background: var(--ptp-facebook);
+}
+
+.ptp-share-btn--twitter {
+    background: var(--ptp-twitter);
+}
+
+.ptp-share-btn--copy {
+    background: #6B7280;
+}
+
+.ptp-share-btn--copy.copied {
+    background: var(--ptp-success);
+}
+
+.ptp-share-btn svg,
+.ptp-share-btn__icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================================================
+   Share Prompt
+   ========================================================================== */
+.ptp-share-prompt {
+    background: linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%);
+    border: 2px solid var(--ptp-success);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+    text-align: center;
+}
+
+.ptp-share-prompt__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    margin: 0 0 8px;
+    color: #059669;
+}
+
+.ptp-share-prompt__subtitle {
+    color: #666;
+    margin: 0 0 20px;
+    font-size: 15px;
+}
+
+/* ==========================================================================
+   Referral Link Input
+   ========================================================================== */
+.ptp-referral-link {
+    display: flex;
+    gap: 8px;
+    max-width: 450px;
+    margin: 16px auto 0;
+}
+
+.ptp-referral-link input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    min-width: 0;
+}
+
+.ptp-referral-link input:focus {
+    outline: none;
+    border-color: var(--ptp-gold);
+}
+
+.ptp-referral-link__btn {
+    background: var(--ptp-black);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.ptp-referral-link__btn:hover {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+.ptp-referral-link__btn.copied {
+    background: var(--ptp-success);
+}
+
+/* ==========================================================================
+   Referral Dashboard
+   ========================================================================== */
+.ptp-referral-dashboard {
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.ptp-referral-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ptp-referral-stat {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.ptp-referral-stat--credit {
+    background: #F0FDF4;
+}
+
+.ptp-referral-stat--referrals {
+    background: #FEF3C7;
+}
+
+.ptp-referral-stat--earned {
+    background: #EDE9FE;
+}
+
+.ptp-referral-stat__value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ptp-referral-stat--credit .ptp-referral-stat__value {
+    color: #059669;
+}
+
+.ptp-referral-stat--referrals .ptp-referral-stat__value {
+    color: #D97706;
+}
+
+.ptp-referral-stat--earned .ptp-referral-stat__value {
+    color: #7C3AED;
+}
+
+.ptp-referral-stat__label {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Referral Share Card
+   ========================================================================== */
+.ptp-referral-share-card {
+    background: var(--ptp-black);
+    border-radius: 12px;
+    padding: 24px;
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.ptp-referral-share-card__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+}
+
+.ptp-referral-share-card__subtitle {
+    color: #9CA3AF;
+    font-size: 14px;
+    margin: 0 0 16px;
+}
+
+.ptp-referral-share-card .ptp-referral-link input {
+    background: #1F1F1F;
+    color: #fff;
+    border-color: #333;
+}
+
+.ptp-referral-share-card .ptp-referral-link__btn {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+}
+
+/* ==========================================================================
+   Social Proof Notifications
+   ========================================================================== */
+#ptp-social-proof {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.ptp-proof-notification {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 340px;
+    animation: slideInLeft 0.3s ease, slideOutLeft 0.3s ease 4.7s forwards;
+    pointer-events: auto;
+    margin-bottom: 12px;
+}
+
+.ptp-proof-notification__image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.ptp-proof-notification__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.ptp-proof-notification__title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ptp-black);
+    margin: 0 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ptp-proof-notification__subtitle {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ptp-proof-notification__time {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   Share Modal
+   ========================================================================== */
+.ptp-share-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.ptp-share-modal.active {
+    display: flex;
+}
+
+.ptp-share-modal__content {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    overflow: hidden;
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ptp-share-modal__header {
+    background: var(--ptp-black);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.ptp-share-modal__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.ptp-share-modal__close {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.ptp-share-modal__close:hover {
+    opacity: 1;
+}
+
+.ptp-share-modal__body {
+    padding: 24px;
+    text-align: center;
+}
+
+.ptp-share-modal__emoji {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.ptp-share-modal__headline {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.ptp-share-modal__description {
+    color: #666;
+    font-size: 14px;
+    margin: 0 0 20px;
+}
+
+/* ==========================================================================
+   Leaderboard
+   ========================================================================== */
+.ptp-leaderboard {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.ptp-leaderboard__header {
+    background: var(--ptp-black);
+    color: #fff;
+    padding: 16px 20px;
+}
+
+.ptp-leaderboard__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.ptp-leaderboard__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ptp-leaderboard__item {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ptp-leaderboard__item:last-child {
+    border-bottom: none;
+}
+
+.ptp-leaderboard__rank {
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.ptp-leaderboard__name {
+    flex: 1;
+    font-weight: 600;
+}
+
+.ptp-leaderboard__count {
+    background: var(--ptp-gold);
+    color: var(--ptp-black);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Achievement Badges
+   ========================================================================== */
+.ptp-achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ptp-achievement {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #F3F4F6;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.ptp-achievement--unlocked {
+    background: var(--ptp-gold);
+}
+
+.ptp-achievement__icon {
+    font-size: 16px;
+}
+
+/* ==========================================================================
+   Mobile Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ptp-share-buttons {
+        flex-direction: column;
+    }
+    
+    .ptp-share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .ptp-referral-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .ptp-referral-link {
+        flex-direction: column;
+    }
+    
+    .ptp-referral-link input {
+        text-align: center;
+    }
+    
+    #ptp-social-proof {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+    
+    .ptp-proof-notification {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .ptp-share-modal__content {
+        margin: 10px;
+    }
+    
+    .ptp-referral-stat__value {
+        font-size: 24px;
+    }
+    
+    .ptp-share-prompt {
+        padding: 20px 16px;
+    }
+}
+
+/* ==========================================================================
+   How It Works Section
+   ========================================================================== */
+.ptp-how-it-works {
+    background: #F9FAFB;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.ptp-how-it-works__title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0 0 16px;
+}
+
+.ptp-how-it-works__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    text-align: center;
+}
+
+.ptp-how-it-works__step-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.ptp-how-it-works__step-title {
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 0 4px;
+}
+
+.ptp-how-it-works__step-desc {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .ptp-how-it-works__steps {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================================
+   Redeem Credit Section
+   ========================================================================== */
+.ptp-redeem-credit {
+    background: #F0FDF4;
+    border: 2px solid var(--ptp-success);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.ptp-redeem-credit__title {
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.ptp-redeem-credit__desc {
+    color: #666;
+    font-size: 14px;
+    margin: 0 0 16px;
+}
+
+.ptp-redeem-credit__btn {
+    background: var(--ptp-success);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ptp-redeem-credit__btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+/* Print */
+@media print {
+    .ptp-share-modal,
+    #ptp-social-proof,
+    .ptp-share-buttons {
+        display: none !important;
+    }
+}
