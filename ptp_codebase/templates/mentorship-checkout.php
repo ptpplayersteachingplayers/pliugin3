@@ -114,7 +114,7 @@ footer,.site-footer,#footer,.elementor-location-footer,.footer-wrapper,
 header:not(.mc-nav){display:none!important}
 
 /* Nav */
-.mc-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--black);position:sticky;top:0;z-index:100}
+.mc-nav{display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));background:var(--black);position:sticky;top:0;z-index:100}
 .mc-nav-logo{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:1px}
 .mc-nav-back{color:#fff;font-size:13px;text-decoration:none;opacity:.7;display:flex;align-items:center;gap:6px}
 .mc-nav-back svg{width:16px;height:16px}
@@ -213,6 +213,18 @@ header:not(.mc-nav){display:none!important}
 @media (max-width: 380px) {
     .mc-pkgs { flex-direction: column; gap: 10px; }
     .mc-pkg { padding: 16px; }
+}
+/* Safe area bottom padding */
+body { padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+/* Landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+    .mc-nav { padding-top: 10px; padding-bottom: 10px; }
+    .mc-wrap { padding: 16px 12px; }
+    .mc-success { padding: 20px 16px; }
 }
 </style>
 </head>

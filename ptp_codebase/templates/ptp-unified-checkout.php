@@ -105,8 +105,12 @@ body.ptp-checkout-active { background: var(--ptp-g50) !important; }
     padding: 28px;
     box-shadow: 0 4px 24px rgba(0,0,0,.06);
     height: fit-content;
-    position: sticky;
-    top: 24px;
+}
+@media (min-width: 901px) {
+    .ptp-checkout-form {
+        position: sticky;
+        top: 24px;
+    }
 }
 
 .ptp-cart-header {
@@ -225,6 +229,10 @@ body.ptp-checkout-active { background: var(--ptp-g50) !important; }
 @media (max-width: 500px) {
     .ptp-form-row { grid-template-columns: 1fr; }
 }
+@media (max-width: 380px) {
+    .ptp-checkout-container { padding-left: 12px; padding-right: 12px; }
+    .ptp-cart-summary, .ptp-checkout-form { padding: 20px 16px; border-radius: 14px; }
+}
 
 .ptp-form-field {
     display: flex;
@@ -247,9 +255,10 @@ body.ptp-checkout-active { background: var(--ptp-g50) !important; }
     padding: 12px 14px;
     border: 2px solid #e5e7eb;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: inherit;
     transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
 }
 
 .ptp-form-field input:focus,
@@ -344,9 +353,11 @@ body.ptp-checkout-active { background: var(--ptp-g50) !important; }
 }
 
 .ptp-waiver-check input {
-    margin-top: 4px;
-    width: 18px;
-    height: 18px;
+    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--ptp-gold);
+    flex-shrink: 0;
 }
 
 .ptp-waiver-text {

@@ -85,6 +85,13 @@
     color: #FCB900;
     font-size: 24px;
     cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .ptp-mini-cart-items {
